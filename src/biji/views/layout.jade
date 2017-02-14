@@ -3,5 +3,9 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    block css
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/common.js')
+    block js
   body
     block content

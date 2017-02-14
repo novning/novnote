@@ -4,9 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
+var login = require('./routes/login');
+var mastery = require('./routes/mastery');
+var point = require('./routes/point');
+var backend = require('./routes/backend');
 
 var app = express();
 
@@ -20,10 +25,32 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'no secret hehe', //??
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/login', login);
+//登陆判断
+app.use(function (req, res, next) {
+    var method = req.method;
+    if(req.session.user == undefined || method != "GET"){
+      console.log(req.session.user + "---" + method);
+      return res.redirect("/login");
+    }
+    next();
+});
+
+
 app.use('/', index);
-app.use('/users', users);
+app.use('/user', user);
+app.use('/mastery', mastery);
+app.use('/point', point);
+app.use('/backend', backend);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

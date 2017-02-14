@@ -1,0 +1,13 @@
+extends layout
+block css
+  link(rel='stylesheet', href='/stylesheets/login.css')
+block js
+  script(src='/javascripts/login.js')
+body
+block content
+  label Username:
+  input(type="text",name="name",id = "name",value="admin")
+  label Password:
+  input(type="password",name="password" id = "password",value="admin")
+  button(type="button",id="login") Login
+  div(id="message",style="color:red")

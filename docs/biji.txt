@@ -1,0 +1,22 @@
+biji
+
+域名 snshine.com
+
+开发模式 敏捷
+
+技术栈
+  JQuery Express MongoDB
+
+运行环境
+  阿里云 CentOS7
+  反向代理 nginx
+  Node.js
+
+
+
+table designer
+  user id name password
+  mastery id name order
+  point id name createTime doneTime total unit process order priority masteryId
+  pointHistory id pointId updateScore
+  experience id title content createTime updateTime itemId
