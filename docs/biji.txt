@@ -2,10 +2,8 @@ biji
 
 域名 snshine.com
 
-开发模式 敏捷
-
 技术栈
-  JQuery Express MongoDB
+  JQuery Quill Express MongoDB
 
 运行环境
   阿里云 CentOS7

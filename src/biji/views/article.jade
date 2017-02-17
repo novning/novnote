@@ -1,8 +1,21 @@
 extends layout
 block css
-  link(rel='stylesheet', href='/stylesheets/jade.css')
+  link(href="/javascripts/lib/quill/quill.core.css",rel="stylesheet" )
+  link(href="/javascripts/lib/quill/quill.snow.css",rel="stylesheet" )
+  link(href="/javascripts/lib/quill/quill.bubble.css",rel="stylesheet" )
+  link(rel='stylesheet', href='/stylesheets/article.css')
 block js
-  script(src='/javascripts/jade.js')
+  script(src="/javascripts/lib/quill/quill.core.js" )
+  script(src="/javascripts/lib/quill/quill.min.js" )
+  script(src="/javascripts/article.js" )
+
+
 body
 block content
     include head.jade
+    div(id="container")
+      div(id="title-container")
+        input(type="text",class="title-input",placeholder="title",id = "title")
+        button(id = "save",class = "btn") save
+      div(id="quill-container")
+      div(id="article-panel")
