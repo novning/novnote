@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var userDB = require('./DB/UserDB');
+var userService = require('./service/UserService');
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.put('/', function(req, res, next) {
   var user = req.body;
-  userDB.login(user,function(loginUser){
+  userService.login(user,function(loginUser){
     console.log(loginUser);
       if(loginUser != null){
           //login success
@@ -23,9 +23,10 @@ router.put('/', function(req, res, next) {
   });
 });
 
-router.delete('/', function(req, res, next) {
+router.get('/exit', function(req, res, next) {
   req.session.user = undefined;
-  res.send({code:0,result:"success"});
+  //res.send({code:0,result:"success"});
+  res.render('login', { title: 'Login' });
 });
 
 module.exports = router;

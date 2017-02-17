@@ -15,8 +15,12 @@ biji
 
 
 table designer
+
+
   user id name password
-  mastery id name order
-  point id name createTime doneTime total unit process order priority masteryId
-  pointHistory id pointId updateScore
-  experience id title content createTime updateTime itemId
+
+  task id name createTime startTime doneTime takeTime status order
+  taskHistory id name createTime startTime doneTime takeTime status order
+  taskStatus id key value(开始，完成)
+
+  article id title content createTime updateTime;

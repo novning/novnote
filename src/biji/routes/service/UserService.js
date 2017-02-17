@@ -1,8 +1,8 @@
-var DBConnect = require('./DBConnect');
+var userData = require('../data/UserData');
 
-var UserDB = {
+var userService = {
   login:function(user,callback){
-    DBConnect.filter("user",user,function(user){
+    userData.filter(user,function(user){
       if(user.length > 0){
           callback(user[0]);
       }else{
@@ -12,4 +12,5 @@ var UserDB = {
   }
 
 }
-module.exports = UserDB;
+
+module.exports = userService;

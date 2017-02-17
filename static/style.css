@@ -11,9 +11,9 @@
   src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
-       url("../font/material_icons.woff2") format('woff2'),
-       url(../font/material_icons.woff) format('woff'),
-       url(../font/material_icons.ttf) format('truetype');
+       url(material_icons.woff2) format('woff2'),
+       url(material_icons.woff) format('woff'),
+       url(material_icons.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -38,7 +38,7 @@
 
   /* Support for IE. */
   font-feature-settings: 'liga';
-
+    
     vertical-align: middle;
 }
 
@@ -47,12 +47,11 @@
 
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
-
+        
 .material-icons.md-15 { font-size: 15px; }
 .material-icons.md-25 { font-size: 25px; }
-.material-icons.md-40 { font-size: 40px; }
 .material-icons.md-50 { font-size: 50px; }
-
+        
 body{
     background-color: #eeeeee;
     font: normal 100% Helvetica, Arial, sans-serif;
@@ -71,101 +70,17 @@ a:active{
 a,input,button{ outline:none; }
 ::-moz-focus-inner{border:0px;}
 .btn{
+    padding:0 10px;
     background-color: #ffa42e;
     color:#ffffff;
     border-style: none;
     border-radius: 3px;
-    margin:2px;
-    height:20px;
-    width:17%;
+    margin:0px;
 }
-
-button:hover {
+.btn:hover {
     background-color:#ff941e;
 }
-button:active {
+.btn:active {
     position:relative;
     top:1px;
-}
-button:disabled{
-  color:#ffa42e;
-  background-color: #eee;
-}
-
-body{
-  background-color: #F5F5F5;
-}
-.add-input {
-    border: 2px solid #fff;
-    height:26px;
-    line-height: 26px;
-    width:200px;
-    padding-left: 2px;
-    padding-right: 2px;
-    vertical-align: bottom;
-}
-.oper-btn {
-    background-color: #ffa42e;
-    border: 2px solid #fff;
-    color:#fff;
-    height:26px;
-    width:40px;
-    font-size:16px;
-    font-weight: bold;
-}
-.oper-btn:hover {
-    background-color:#ff941e;
-}
-.oper-btn:active {
-    position:relative;
-    top:1px;
-}
-.container{
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-#nav{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:50px;
-    background-color:#ffa42e;
-    z-index:99;
-}
-#nav a{
-  margin: 0 9px;
-}
-#logo{
-    color:#ffffff;
-    margin-left:20px;
-    font-size:35px;
-    display:inline-block;
-    margin-top:5px;
-}
-#nav-panel{
-    position:absolute;
-    top:15px;
-    right:15px;
-}
-#add-panel{
-    margin-top:80px;
-    text-align:right;
-    width:90%;
-}
-.to-head-arrow{
-    position:fixed;
-    right:20px;
-    bottom:30px;
-    background-color:#ffa42e;
-    color:#fff;
-    border-radius:5px;
-}
-div{
-  -moz-user-select:none;
-
-     -webkit-user-select:none;
-
-     user-select:none;  
 }

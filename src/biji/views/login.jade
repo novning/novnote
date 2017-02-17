@@ -5,9 +5,11 @@ block js
   script(src='/javascripts/login.js')
 body
 block content
-  label Username:
-  input(type="text",name="name",id = "name",value="admin")
-  label Password:
-  input(type="password",name="password" id = "password",value="admin")
-  button(type="button",id="login") Login
-  div(id="message",style="color:red")
+  div(class = "login-container")
+    div(id = "message" style="color:red")
+      div
+        input(type="text",class="biji-input",placeholder="username",id = "name",value = "admin")
+      div
+        input(type = "password",class = "biji-input",id = "password",value = "admin",placeholder = "password" )
+      div(style="text-align:right")
+        button(id = "login",class = "btn-large") Login

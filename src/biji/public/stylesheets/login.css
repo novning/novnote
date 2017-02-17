@@ -1,0 +1,26 @@
+.biji-input {
+  border: 2px solid #fff;
+  height:40px;
+  line-height: 40px;
+  width:200px;
+  margin:5px 0;
+  padding:5px;
+}
+.btn-large{
+    background-color: #ffa42e;
+    color:#ffffff;
+    border-style: none;
+    border-radius: 3px;
+    margin:2px;
+    height:50px;
+    width:100px;
+}
+
+#login{
+    padding:10px 20px;
+}
+.login-container{
+  position:fixed;
+  top:40%;
+  left:40%;
+}

@@ -7,11 +7,11 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var index = require('./routes/index');
-var user = require('./routes/user');
-var login = require('./routes/login');
-var mastery = require('./routes/mastery');
-var point = require('./routes/point');
 var backend = require('./routes/backend');
+var login = require('./routes/login');
+var user = require('./routes/user');
+var task = require('./routes/task');
+
 
 var app = express();
 
@@ -35,9 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/login', login);
 //登陆判断
 app.use(function (req, res, next) {
-    var method = req.method;
-    if(req.session.user == undefined || method != "GET"){
-      console.log(req.session.user + "---" + method);
+    if(req.session.user == undefined){
       return res.redirect("/login");
     }
     next();
@@ -45,11 +43,9 @@ app.use(function (req, res, next) {
 
 
 app.use('/', index);
-app.use('/user', user);
-app.use('/mastery', mastery);
-app.use('/point', point);
 app.use('/backend', backend);
-
+app.use('/user', user);
+app.use('/task', task);
 
 
 // catch 404 and forward to error handler

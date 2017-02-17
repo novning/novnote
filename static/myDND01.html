@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            #container{
+                width:1000px;
+                height:1000px;
+                border:1px solid black;
+                margin-left: 50px;
+            }
+            .cube{
+                display: inline-block;
+                width:100px;
+                height:100px;
+                background-color: #eee;
+                margin:0;
+            }
+        </style>
+        <script src="jquery.js"></script>
+        <script>
+            var cubeListA = [{id:"a",order:0},{id:"b",order:1},{id:"c",order:2}];
+            var cubeListB = [{id:"d",order:0},{id:"e",order:1},{id:"f",order:2}];
+            
+            (function($){
+                $.fn.bijiPanel = function(opt) {
+                    var container = this;
+                    var defaults = {
+                        'color': 'red',
+                        'fontSize': '12px'
+                    };
+                    var options = $.extend(defaults, opt);
+                    
+                    function bindEvent(upCallback){
+                        console.info("bind event");
+                        container.find(".cube").on('mousedown',function(e){
+                            var selectCube = $(this);
+                            var posX = e.clientX - selectCube.position().left;
+                            var posY = e.clientY - selectCube.position().top;
+                            var cubes = {};
+                            var order = parseInt(selectCube.attr("order"));
+                            $(container.find(".cube").get().reverse()).each(function(i,v){
+                                cubes[$(v).attr("order")] = {left:$(v).position().left,
+                                                             top:$(v).position().top,
+                                                             right:$(v).position().left + $(v).width(),
+                                                             bottom:$(v).position().top+$(v).height()};
+                                $(v).css({'position':'absolute',
+                                          'left':$(v).position().left+'px',
+                                          'top':$(v).position().top+'px'});
+                            });
+                            
+                            $(document).on('mousemove',function(e){
+                                var selectCubeLeft = e.clientX - posX;
+                                var selectCubeTop = e.clientY - posY;
+                                selectCube.css({'left':selectCubeLeft+'px','top':selectCubeTop+'px'});
+                                
+                                var currentCubePosX = e.clientX - selectCube.parent().position().left; 
+                                var currentCubePosY = e.clientY - selectCube.parent().position().top;
+                                for(var i in cubes){
+                                    if(currentCubePosX > cubes[i].left &&
+                                       currentCubePosX < cubes[i].right &&
+                                       currentCubePosY > cubes[i].top && 
+                                       currentCubePosY < cubes[i].bottom &&
+                                      order != i){
+                                        var swapOrder = parseInt(i);
+                                        var moveTo = function(num,j){
+                                                var c = $('.cube[order='+j+']');
+                                                $(c).stop();
+                                                var t = cubes[j+num];
+                                            
+                                                c.animate({left:t.left,top:t.top},'fast');
+                                                c.attr('order',j+num);
+                                            }
+                                            if(order>swapOrder){
+                                                for(var j=order-1; j>=swapOrder; j--){
+                                                    moveTo(1,j);
+                                                }
+                                            }else{
+                                                for(var j = order+1;j < swapOrder + 1; j++){
+                                                    moveTo(-1,j);
+                                                }
+                                            };
+                                            order = swapOrder;
+                                            selectCube.attr('order',swapOrder);  //变换_this的index
+                                    }else{
+                                        
+                                    }
+                                }
+                                
+                            });
+                            
+                            $(document).on('mouseup',function(){
+                                $(this).off('mousemove');
+                                $(this).off('mouseup');
+                                selectCube.animate(
+                                    {left:parseInt(cubes[order].left),
+                                     top:parseInt(cubes[order].top)},
+                                                   'fast',function(){
+                                    selectCube.css({'opacity':1,'zIndex':0})         
+                                });
+                                upCallback();
+                                
+                            });                 
+                        });
+                    }
+                    var _bijiPanel = {
+                        test:function(){
+                            console.info("haha");
+                            return this;
+                        },
+                        init:function(){
+                            $.each(options.data,function(i,v){
+                                container.append('<div id = "' + v.id + '" class = "cube" order = "' + v.order + '"></div>');  
+                            });
+                            bindEvent(options.upCallback);
+                        }
+                        
+                    }
+                    return _bijiPanel;
+                }
+            })(jQuery);
+            $(document).ready(function () {
+                var panel1 = $("#container").bijiPanel({data:cubeListA}).init();
+                
+                
+            });
+
+        </script>
+    </head>
+    
+    <body>
+        <div id = "container">
+        </div>
+    </body>
+</html>

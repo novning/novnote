@@ -3,8 +3,10 @@
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
+//启动mogodb mongod --dbpath=/data
+
 // Connection URL
-var url = 'mongodb://172.16.18.130:27017/ningbiji';
+var url = 'mongodb://172.16.18.129:27017/ningbiji';
 
 var insertDocuments = function(db,collection,data,callback) {
   // Get the documents collection
@@ -16,35 +18,50 @@ var insertDocuments = function(db,collection,data,callback) {
     callback(result);
   });
 }
+var clearCollections = function(db,collection,callback){
+  var col = db.collection(collection);
+  col.deleteMany({});
+}
 
-// Use connect method to connect to the server
-// MongoClient.connect(url, function(err, db) {
-//   assert.equal(null, err);
-//   console.log("Connected successfully to server");
-//   //此处需要MD5加密
-//   var data = [{name:"admin",password:"admin"}];
-//   insertDocuments(db,"user", data,function() {
-//     db.close();
-//   });
-// });
 
 // user id name password
-// mastery id name order
-// point id name createTime startTime doneTime total unit process order priority masteryId
-// pointHistory id pointId updateScore
-// experience id title content createTime updateTime itemId
+//
+// task id name createTime startTime doneTime takeTime status order
+// taskHistory id name createTime startTime doneTime takeTime status order
+// taskStatus id key value(开始，完成)
+//
+// article id title content createTime updateTime;
 
 MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-  //此处需要MD5加密
-  // var mastery = [{name:"计算机",order:"0"},{name:"English",order:"1"}];
-  // insertDocuments(db,"mastery", mastery,function() {
-  //   db.close();
-  // });
 
-  var mastery = [{name:"计算机原理",createTime:new Date(),updateTime:null,doneTime:null,total:100,process:0,order:0,remarks:"",masteryId:'589f006749764fca943ed013'}];
-  insertDocuments(db,"point", mastery,function() {
+  console.log("Connected successfully to server");
+
+  //user
+  clearCollections(db,"user",function(){db.close();});
+  //此处需要MD5加密
+  var data = [{name:"admin",password:"admin"}];
+  insertDocuments(db,"user", data,function() {
+    db.close();
+  });
+
+  //taskStatus
+  clearCollections(db,"taskStatus",function(){db.close();});
+  var taskStatus = [{key:0,value:"创建"},{key:1,value:"开始"},{key:1,value:"完成"}];
+  insertDocuments(db,"taskStatus", taskStatus,function() {
+    db.close();
+  });
+
+  //task
+  clearCollections(db,"task",function(){db.close();});
+  var date = new Date().getTime();
+  var date2016 = new Date(2016,1,3,10,52,03).getTime();
+  var task = [
+    {name:"深入理解计算机系统1",createTime:date,startTime:null,doneTime:null,updateTime:date,takeTime:0,status:0,order:2},
+    {name:"深入理解计算机系统2",createTime:date,startTime:null,doneTime:null,updateTime:date,takeTime:0,status:0,order:1},
+    {name:"深入理解计算机系统3",createTime:date,startTime:null,doneTime:null,updateTime:date,takeTime:0,status:0,order:0},
+    {name:"跑步100公里",createTime:date2016,startTime:null,doneTime:null,updateTime:date2016,takeTime:0,status:0,order:1}];
+
+  insertDocuments(db,"task", task,function() {
     db.close();
   });
 });

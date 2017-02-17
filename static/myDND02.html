@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            #container{
+                width:1000px;
+                height:1000px;
+                border:1px solid black;
+            }
+            .cube{
+                display: inline-block;
+                width:100px;
+                height:100px;
+                background-color: #eee;
+                margin:0;
+                position:absolute;
+            }
+        </style>
+        <script src="jquery.js"></script>
+        <script>
+            var cubeListA = [{id:"a",order:0}];
+            
+            
+            (function($){
+                $.fn.bijiPanel = function(opt) {
+                    var container = this;
+                    var defaults = {};
+                    var options = $.extend(defaults, opt);
+                    
+                    function bindEvent(upCallback){
+                        console.info("bind event");
+                        container.find(".cube").on('mousedown',function(e){
+                            var selectCube = $(this);
+//                            var posX = e.clientX - selectCube.position().left;
+//                            var posY = e.clientY - selectCube.position().top;
+                            var posX = e.clientX - selectCube.position().left;
+                            var posY = e.clientY - selectCube.position().top;
+                            
+                            $(document).on('mousemove',function(e){
+//                                var selectCubeLeft = e.clientX - posX;
+//                                var selectCubeTop = e.clientY - posY;
+                                var selectCubeLeft =  e.clientX -posX;
+                                var selectCubeTop =  e.clientY - posY;
+                                selectCube.css({'left':selectCubeLeft+'px','top':selectCubeTop+'px'});
+                                console.info(selectCubeLeft);
+                                
+                            });
+                            
+                                             
+                        });
+                    }
+                    var _bijiPanel = {
+                        test:function(){
+                            console.info("haha");
+                            return this;
+                        },
+                        init:function(){
+                            $.each(options.data,function(i,v){
+                                container.append('<div id = "' + v.id + '" class = "cube" order = "' + v.order + '"></div>');  
+                            });
+                            bindEvent(options.upCallback);
+                        }
+                        
+                    }
+                    return _bijiPanel;
+                }
+            })(jQuery);
+            $(document).ready(function () {
+                var panel1 = $("#container").bijiPanel({data:cubeListA}).init();
+                
+                
+            });
+
+        </script>
+    </head>
+    
+    <body>
+        <div id = "container">
+        </div>
+    </body>
+</html>

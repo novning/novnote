@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var userDB = require('./DB/UserDB');
+var userService = require('./service/userService');
 
 /* GET login page. */
 router.get('/', function(req, res, next) {

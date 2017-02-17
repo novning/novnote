@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>文档的标题</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media = "all" href="style.css">
+    <link rel="stylesheet" media = "all" href="backend.css">
+    <link rel="stylesheet" media = "all" href="index.css">
+    <style>
+        
+        table {
+	font-family: verdana,arial,sans-serif;
+	font-size:15px;
+	color:#333333;
+/*
+	border-width: 1px;
+	border-color: #666666;
+*/
+	border-collapse: collapse;
+}
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #ffffff;
+	background-color: #ffa42e;
+    color:#ffffff;
+}
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #ffffff;
+	background-color: #eeeeee;
+}
+    </style>
+    
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+
+    <div id = "nav">
+        <span id = "logo">
+            <i class = "material-icons">explore</i> snshine
+        </span>
+        <span id = "nav-panel">
+            <a href = "#"><i class = "material-icons ">settings</i></a>
+            <a href = "#"><i class = "material-icons ">exit_to_app</i></a>
+        </span>
+    </div>
+    <div id = "search-panel">
+        <input type="text" class="add-input" placeholder="create" /><button id = "add-btn" class="add-btn"><i class = "material-icons ">add</i></button>
+    </div>
+    <div class = "container">
+        <table style="border:1px solid black;margin:30px auto;">
+            <tr>
+                <th>名称</th>
+            <th>创建时间</th>
+            <th>开始时间</th>
+            <th>完成时间</th>
+            <th>使用时间</th>
+            <th>状态</th>
+            <th>更新</th>
+            <th>删除</th>
+            </tr>
+            <tr>
+                <td>a</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
+                <td>
+                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
+                </td>
+                <td>
+                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>a</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
+                <td>
+                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
+                </td>
+                <td>
+                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>晚来天欲雪能饮一杯无落花有意流水无情</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
+                <td>
+                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
+                </td>
+                <td>
+                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>a</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
+                <td>
+                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
+                </td>
+                <td>
+                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id = "toHeadArrow" class = "to-head-arrow">
+        <a href = "#"><i class = "material-icons md-50">arrow_upward</i></a>
+    </div>
+</body>
+    
+    
+</html>

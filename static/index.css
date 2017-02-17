@@ -1,0 +1,88 @@
+.add-input {
+    border: 2px solid #fff;            
+    height:26px;            
+    line-height: 26px;            
+    width:200px;            
+    padding-left: 2px;            
+    padding-right: 2px;            
+    vertical-align: bottom;        
+}        
+.add-btn {            
+    background-color: #ffa42e;            
+    border: 2px solid #fff;    
+    color:#fff;
+    height:26px;                        
+    width:40px;            
+    font-size:16px;            
+    font-weight: bold;        
+}
+.add-btn:hover {
+    background-color:#ff941e;
+}
+.add-btn:active {
+    position:relative;
+    top:1px;
+}
+#nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:50px;
+    background-color:#ffa42e;
+    z-index:99;
+}
+#logo{
+    color:#ffffff;
+    margin-left:20px;
+    font-size:35px;
+    display:inline-block;
+    margin-top:5px;
+}
+#nav-panel{
+    position:absolute;
+    top:15px;
+    right:15px;
+}
+#search-panel{
+    margin-top:80px;
+    text-align:right;
+    width:90%;
+}
+.timeline{
+    color:#373737;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.25);
+}
+.container{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;        
+}
+.task_panel{
+    font-size: 15px;
+    width:230px;
+    min-height: 120px;
+    background-color: #fff;
+    margin:10px;
+    padding:10px;
+    line-height: 25px;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,0.25);
+    display: inline-block;
+    vertical-align: top;
+}
+.task_panel .title{
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.25);
+}
+.operator{
+    top:3px;
+}
+.to-head-arrow{
+    position:fixed;
+    right:20px;
+    bottom:30px;
+    background-color:#ffa42e;
+    color:#fff;
+    border-radius:5px;
+}

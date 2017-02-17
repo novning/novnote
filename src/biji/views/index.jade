@@ -1,9 +1,18 @@
 extends layout
 block css
-  link(rel='stylesheet', href='/stylesheets/backend.css')
+  link(rel='stylesheet', href='/stylesheets/index.css')
 block js
-  script(src='/javascripts/backend.js')
+  script(src='/javascripts/bijiPanel.js')
+  script(src='/javascripts/index.js')
 body
 block content
-  div(id='category')
-  div(id='item')
+    include head.jade
+    div(id = "add-panel" )
+      input(type="text" class="add-input" placeholder="create" )
+      button(id = "add-btn" class="oper-btn" )
+        i(class = "material-icons") add
+    div(class = "container" )
+
+    div(id = "toHeadArrow" class = "to-head-arrow" )
+      a(href = "#" )
+        i(class = "material-icons md-50") arrow_upward

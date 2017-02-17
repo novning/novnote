@@ -5,7 +5,7 @@ $(document).ready(function(){
     var user = {name:name,password:password};
     restful.put("/user/login",user).success(function(e){
       if(e.code == 0){
-        window.location = "/backend";
+        window.location = "/";
       }else{
         $("#message").html(e.result);
       }
