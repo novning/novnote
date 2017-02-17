@@ -11,13 +11,15 @@
 #title{
   height:30px;
   width:250px;
+  padding:5px;
 }
 #save{
   background-color: #ffa42e;
-color: #ffffff;
-border-style: none;
-border-radius: 3px;
-margin: 2px;
-height: 30px;
-width: 50px;
+  color: #ffffff;
+  border-style: none;
+  border-radius: 3px;
+  margin: 2px;
+  height: 30px;
+  width: 50px;
+
 }
