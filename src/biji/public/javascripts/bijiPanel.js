@@ -16,7 +16,7 @@
                       '<button class="btn btn-orderSetting">排序</span>' +
                   '</div>';
         }
-        function taskRender(data){
+        function taskRender(index,data){
           var startTime;
           if(data.startTime == null){
             startTime = "";
@@ -30,7 +30,7 @@
             doneTime = new Date(data.doneTime).format("yyyy/MM/dd");
           }
           var takeTime = data.takeTime + " h";
-          var str = '<div class = "task_panel" id = "' + data._id + '" order = "' + data.order + '">' +
+          var str = '<div class = "task_panel" id = "' + data._id + '" index = "' + index + '">' +
               '<div class = "title lh">' + data.name + '</div>' +
               '<div class = "lh">' +
                   '<i class = "material-icons md-25">timeline</i>' +
@@ -110,18 +110,20 @@
           container.find(".btn-orderSetting").click(function(){
             if(isOrdering){
               container.find(".task_panel").off("mousedown");
+              container.find(".task_panel").removeAttr("style");
+              container.css("height","");
               isOrdering = false;
               $(this).text("排序");
               var updateTask = [];
               container.find(".task_panel").each(function(i,v){
-                updateTask.push({id:$(v).attr("id"),order:$(v).attr("order")});
+                updateTask.push({id:$(v).attr("id")});
               });
               restful.put("/task/order",updateTask).success(function(e){
                 console.info(e);
               });
             }else{
               isOrdering = true;
-              bindDragEvent();
+              bindDragEvent($(this).parent());
               $(this).text("完成");
             }
           });
@@ -137,9 +139,10 @@
 
                 var cubes = {};
 
-                var order = parseInt(selectCube.attr("order"));
-                var swapOrder;
-                var useForOnMouseUpOrder = order;
+                var index = parseInt(selectCube.attr("index"));
+                console.info(index);
+                var swapIndex;
+                var useForOnMouseUpIndex = index;
                 $(selectCube).css({'opacity':0.9,'zIndex':1});
                 container.css("height",container.height());
                 $(container.find(".task_panel").get().reverse()).each(function(i, v) {
@@ -152,7 +155,7 @@
                       'margin':$(v).css("margin"),
                       'padding':$(v).css('padding')
                   });
-                    cubes[$(v).attr("order")] = {
+                    cubes[$(v).attr("index")] = {
                         left: $(v).position().left,
                         top: $(v).position().top,
                         right: $(v).position().left + $(v).outerWidth(),
@@ -167,7 +170,6 @@
                         'left': selectCubeLeft + 'px',
                         'top': selectCubeTop + 'px'
                     });
-
                     var currentPosX = e.clientX;
                     var currentPosY = e.clientY;
 
@@ -176,56 +178,52 @@
                             currentPosX < cubes[i].right &&
                             currentPosY > cubes[i].top &&
                             currentPosY < cubes[i].bottom &&
-                            order != i) {
-                            swapOrder = parseInt(i);
+                            index != i) {
+                              console.info("im in");
+                            swapIndex = parseInt(i);
                             var moveTo = function(num, j) {
-                                var c = $('.task_panel[order=' + j + ']');
+                                var c = $('.task_panel[index=' + j + ']');
                                 $(c).stop();
                                 var t = cubes[j + num];
-
+                                console.info(j+"|||" +num);
                                 c.animate({
                                     left: t.left,
                                     top: t.top
                                 }, 'fast');
-                                c.attr('order', j + num);
+                                c.attr('index', j + num);
                             }
-                            if (order > swapOrder) {
-                                for (var j = order - 1; j >= swapOrder; j--) {
+                            if (index > swapIndex) {
+                                for (var j = index - 1; j >= swapIndex; j--) {
                                     moveTo(1, j);
                                 }
                             } else {
-                                for (var j = order + 1; j < swapOrder + 1; j++) {
+                                for (var j = index + 1; j < swapIndex + 1; j++) {
                                     moveTo(-1, j);
                                 }
                             };
-                            order = swapOrder;
-                            selectCube.attr('order', swapOrder); //变换_this的index
+                            index = swapIndex;
+                            selectCube.attr('index', swapIndex); //变换_this的index
                         } else {
-                          console.info("else interesting");
+
                         }
                     }
-
                 });
-
                 $(document).on('mouseup', function() {
                     $(this).off('mousemove');
                     $(this).off('mouseup');
                     selectCube.animate({
-                            left: parseInt(cubes[order].left),
-                            top: parseInt(cubes[order].top)
+                            left: parseInt(cubes[index].left),
+                            top: parseInt(cubes[index].top)
                         },'fast',
                         function() {
-                          var swapPanel = $('.task_panel[order=' + useForOnMouseUpOrder + ']');
-                          console.info(useForOnMouseUpOrder + "|||" + order);
-                          if (useForOnMouseUpOrder > order) {
-                            selectCube.insertBefore(swapPanel);
-
-                          } else {
+                          if(useForOnMouseUpIndex != index){
+                            var swapPanel = $('.task_panel[index=' + useForOnMouseUpIndex+ ']');
+                            if (useForOnMouseUpIndex > index) {
+                              selectCube.insertBefore(swapPanel);
+                            } else {
                               selectCube.insertAfter(swapPanel);
-                          };
-
-                            container.find(".task_panel").removeAttr("style");
-                            container.css("height","");
+                            };
+                          }
                         });
                 });
             });
@@ -238,7 +236,7 @@
             init: function() {
                 container.append(timeRender(data.year));
                 $.each(data.task,function(i,v){
-                    container.append(taskRender(v));
+                    container.append(taskRender(i,v));
                 });
                 bingCRUDEvent();
                 return this;

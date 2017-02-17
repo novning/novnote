@@ -4,7 +4,7 @@ $(document).ready(function(){
   // var panel1 = $("#container").bijiPanel({panel:data:cubeListA}).init();
   // var panel2 = $("#container").bijiPanel({data:cubeListB}).init();
   var bijiPanels = [];
-  
+
   //init data
   function initTask(){
     restful.get("/task").success(function(e){
@@ -21,7 +21,6 @@ $(document).ready(function(){
   });
 
 }
-
 
   $("#add-btn").click(function(){
     var name = $(".add-input").val();

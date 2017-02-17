@@ -1,7 +1,8 @@
 //node basedata.js
 
-var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var secret = require('./routes/common/Secret');
 
 //启动mogodb mongod --dbpath=/data
 
@@ -38,11 +39,13 @@ MongoClient.connect(url, function(err, db) {
 
   //user
   clearCollections(db,"user",function(){db.close();});
-  //此处需要MD5加密
-  var data = [{name:"admin",password:"admin"}];
-  insertDocuments(db,"user", data,function() {
-    db.close();
-  });
+  secret.md5("admin",function(secPwd){
+    var data = [{name:"admin",password:secPwd}];
+    insertDocuments(db,"user", data,function() {
+      db.close();
+    });
+  })
+
 
   //taskStatus
   clearCollections(db,"taskStatus",function(){db.close();});

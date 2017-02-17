@@ -7,6 +7,9 @@ var UserData = {
       DB.filter(this.collection,filter,function(docs){
         callback(docs);
       });
+  },
+  update:function(condition,updateField,callback){
+    DB.update(this.collection,condition,updateField,callback);
   }
 
 }

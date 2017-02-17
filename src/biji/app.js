@@ -11,9 +11,14 @@ var backend = require('./routes/backend');
 var login = require('./routes/login');
 var user = require('./routes/user');
 var task = require('./routes/task');
+var article = require('./routes/article');
 
 
 var app = express();
+
+process.on('uncaughtException', function (err) {
+    console.log('Caught exception: ', err);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +51,7 @@ app.use('/', index);
 app.use('/backend', backend);
 app.use('/user', user);
 app.use('/task', task);
+app.use('/article', article);
 
 
 // catch 404 and forward to error handler

@@ -7,7 +7,7 @@ table {
 	border-color: #666666;
 */
 	border-collapse: collapse;
-  margin:100px auto;
+  margin:20px auto;
 }
 table th {
 	border-width: 1px;
@@ -23,4 +23,20 @@ table td {
 	border-style: solid;
 	border-color: #ffffff;
 	background-color: #eeeeee;
+}
+.pwd-input{
+    border: 2px solid #fff;
+    height: 26px;
+    line-height: 26px;
+    width: 150px;
+    padding-left: 2px;
+    padding-right: 2px;
+    vertical-align: bottom;
+}
+#updatePwdBtn{
+  width:100px;
+}
+#userSetting{
+  margin:20px auto;
+  text-align: center;
 }

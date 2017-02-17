@@ -41,14 +41,14 @@ router.put('/update/:id/:value',function(req,res,next){
 
   taskService.updateTakeTime(id,value,function(e){
     res.send(e);
-  })
+  });
 });
 router.put('/:id',function(req,res,next){
   var id = req.params.id;
   var model = req.body;
   taskService.update(id,model,function(e){
     res.send(e);
-  })
+  });
 });
 
 router.delete('/:id',function(req,res,next){

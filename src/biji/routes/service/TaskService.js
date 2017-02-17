@@ -18,7 +18,7 @@ var taskService = {
         //format
         var result = [];
         for(var t in processData){
-          var sortProcessData = processData[t].sort(function(a,b){return a.order<b.order?-1:1});
+          var sortProcessData = processData[t].sort(function(a,b){return a.order>b.order?-1:1});
           result.push({year:t,task:sortProcessData});
 
         }
@@ -37,6 +37,7 @@ var taskService = {
     model.updateTime = createTime;
     model.takeTime = 0;
     model.status = 0;
+    model.order = createTime;
     taskData.add(model,function(insertCount){
       if(insertCount > 0){
         callback({code:0,result:"success"});
@@ -102,12 +103,14 @@ var taskService = {
     });
   },
   updateOrder:function(tasks,callback){
-
+    var order = tasks.length - 1;
     for(var i = 0;i < tasks.length;i++){
       var task = tasks[i];
       console.info(task.id);
-      taskData.update({_id:task.id},{order:task.order},
-        function(updateResult){});
+      taskData.update({_id:task.id},{order:order},
+        function(updateResult){}
+      );
+      order--;
     }
     callback({code:0,result:"success"});
   },
