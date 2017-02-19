@@ -27,28 +27,8 @@
 .task_panel a{
   font-size:13px;
 }
-.task-btn{
-    color:#ff941e;
-    background-color: #fff;
-    border:1px solid #ff941e;
-    border-style: none;
-    height:20px;
-    width:20%;
-}
 
-.task-btn:hover {
-    color: #ffffff;
-    background-color:#ff941e;
-}
-.task-btn:active {
-    background-color:#ff942e;
-    /*position:relative;
-    top:1px;*/
-}
-.task-btn:disabled{
-  color:#ffa42e;
-  background-color: #eee;
-}
+
 .time-checked{
   color:#fff;
   background-color: #ff941e;

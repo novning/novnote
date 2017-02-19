@@ -1,12 +1,12 @@
 var express = require('express');
 var nlogger = require('./common/nlogger.js');
-var router = express.Router();
 var userService = require('./service/UserService');
+
+var router = express.Router();
 
 var nl = nlogger.logger();
 /* GET login page. */
 router.get('/', function(req, res, next) {
-
   nl.info("login page");
   res.render('login', { title: 'Login' });
 });

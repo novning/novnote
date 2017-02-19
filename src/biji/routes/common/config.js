@@ -1,5 +1,4 @@
 var config = require('config-lite');
-console.info(config);
 var nconfig = {
   port:function(){
     return config.port;
@@ -11,6 +10,5 @@ var nconfig = {
     return config.mongodb;
   }
 }
-
 
 module.exports = nconfig;

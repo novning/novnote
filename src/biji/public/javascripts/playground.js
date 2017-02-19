@@ -21,10 +21,10 @@ $(document).ready(function(){
 
   });
   $("#add-btn").click(function(){
-    var name = $(".add-input").val();
+    var name = $(".biji-normal-input").val();
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
-        $(".add-input").val("");
+        $(".biji-normal-input").val("");
       });
     }
   });

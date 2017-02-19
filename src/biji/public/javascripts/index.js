@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var container = $(".container");
+  var container = $(".content-container");
   var tasks;
   // var panel1 = $("#container").bijiPanel({panel:data:cubeListA}).init();
   // var panel2 = $("#container").bijiPanel({data:cubeListB}).init();
@@ -23,11 +23,11 @@ $(document).ready(function(){
 }
 
   $("#add-btn").click(function(){
-    var name = $(".add-input").val();
+    var name = $(".biji-normal-input").val();
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
         initTask();
-        $(".add-input").val("");
+        $(".biji-normal-input").val("");
       });
     }
   });

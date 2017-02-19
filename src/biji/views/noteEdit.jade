@@ -1,0 +1,21 @@
+extends layout
+block css
+  link(href="/javascripts/lib/quill/quill.core.css",rel="stylesheet" )
+  link(href="/javascripts/lib/quill/quill.snow.css",rel="stylesheet" )
+  link(href="/javascripts/lib/quill/quill.bubble.css",rel="stylesheet" )
+  link(rel='stylesheet', href='/stylesheets/noteEdit.css')
+block js
+  script(src="/javascripts/lib/quill/quill.core.js" )
+  script(src="/javascripts/lib/quill/quill.min.js" )
+  script(src="/javascripts/noteEdit.js" )
+
+
+body
+block content
+  include head.jade
+  div(class="container")
+    div(class="oper-container")
+      input(type="text" id = "title" class="biji-normal-input" placeholder="title",maxlength="50" )
+      button(id = "save" class="biji-normal-btn" data-id=id)
+        i(class = "material-icons") save
+    div(id="quill-container")

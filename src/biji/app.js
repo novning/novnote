@@ -15,6 +15,7 @@ var user = require('./routes/user');
 var task = require('./routes/task');
 var taskDetail = require('./routes/taskDetail');
 var playground = require('./routes/playground');
+var note = require('./routes/note');
 var config = require('./routes/common/config');
 
 
@@ -31,8 +32,8 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(session({
   secret: 'no secret hehe', //??
@@ -53,6 +54,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login', login);
+app.use('/register', register);
 //登陆判断
 app.use(function (req, res, next) {
     if(req.session.user == undefined){
@@ -69,7 +71,8 @@ app.use('/user', user);
 app.use('/task', task);
 app.use('/taskDetail', taskDetail);
 app.use('/playground', playground);
-app.use('/register', register);//使用登陆判断 禁用注册功能...
+app.use('/note', note);
+
 
 
 // catch 404 and forward to error handler

@@ -1,0 +1,16 @@
+extends layout
+block css
+  link(rel='stylesheet', href='/stylesheets/note.css')
+block js
+  script(src='/javascripts/note.js')
+body
+block content
+  include head.jade
+  div(class="container")
+    div(class="oper-container")
+      input(type="text" id = "search-input" class="biji-normal-input" placeholder="search",maxlength="50" )
+      button(id = "search" class="biji-normal-btn" )
+        i(class = "material-icons") search
+      a(href="/note/edit/_" class = "biji-normal-link")
+        i(class = "material-icons") save
+    div(class="note-container")

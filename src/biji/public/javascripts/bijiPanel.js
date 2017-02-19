@@ -13,7 +13,7 @@
                       '<i class = "material-icons md-40">hourglass_empty</i>' +
                       '<span class = "sprint-year">' + year + '</span>'+
                       '<div class = "orderSetting">' +
-                      '<button class="task-btn btn-orderSetting">排序</span>' +
+                      '<button class="biji-fff-btn btn-orderSetting">排序</span>' +
                   '</div>';
         }
         function taskRender(index,data){
@@ -26,7 +26,7 @@
                 '</div>' +
 
                 '<div class = "time-panel">' +
-                    '<button class="task-btn addTime" data-time = "7">7</button><button class="task-btn addTime" data-time = "5">5</button><button class="task-btn addTime" data-time="3">3</button><button class="task-btn addTime" data-time="2">2</button><button class="task-btn addTime" data-time="1">1</button>'+
+                    '<button class="biji-fff-btn addTime" data-time = "7">7</button><button class="biji-fff-btn addTime" data-time = "5">5</button><button class="biji-fff-btn addTime" data-time="3">3</button><button class="biji-fff-btn addTime" data-time="2">2</button><button class="biji-fff-btn addTime" data-time="1">1</button>'+
                 '</div>' +
 
                 '<div class = "log-panel">' +

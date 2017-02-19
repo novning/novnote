@@ -34,6 +34,14 @@ var DB = {
       });
     });
   },
+  filterField:function(collection,filter,field,callback){
+    this.conn(collection,function(col,dbClose){
+      col.find(filter,field).toArray(function(err,docs){
+        dbClose();
+        callback(docs);
+      });
+    });
+  },
   findByID:function(collection,id,callback){
     var that = this;
     this.conn(collection,function(col,dbClose){
@@ -41,6 +49,18 @@ var DB = {
         dbClose();
         if(docs.length > 0){
           callback(docs[0]);
+        }else{
+          callback(null);
+        }
+      });
+    });
+  },
+  findByRegex:function(collection,regex,callback){
+    this.conn(collection,function(col,dbClose){
+      col.find(regex).toArray(function(err,docs){
+        dbClose();
+        if(docs.length > 0){
+          callback(docs);
         }else{
           callback(null);
         }
@@ -55,16 +75,33 @@ var DB = {
       });
     });
   },
+  updateById:function(collection,id,updateField,callback){
+    var that = this;
+    this.conn(collection,function(col,dbClose){
+      col.updateOne({id:that.objId(id)}, { $set: updateField }, function(err, res) {
+        dbClose();
+        callback(res.result.n);
+      });
+    });
+  },
   update:function(collection,con,updateField,callback){
     var that = this;
     this.conn(collection,function(col,dbClose){
       if(con._id && con._id != ""){
         con._id = that.objId(con._id);
       }
-
       col.updateOne(con, { $set: updateField }, function(err, res) {
         dbClose();
         callback(res.result.n);
+      });
+    });
+  },
+  deleteById:function(collection,id,callback){
+    var that = this;
+    this.conn(collection,function(col,dbClose){
+      col.deleteOne({_id:that.objId(id)}, function(err, res) {
+        dbClose();
+        callback(res.deletedCount);
       });
     });
   },
@@ -74,9 +111,7 @@ var DB = {
       if(con._id && con._id != ""){
         con._id = that.objId(con._id);
       }
-      console.info(con);
       col.deleteOne(con, function(err, res) {
-        console.info(err);
         dbClose();
         callback(res.deletedCount);
       });

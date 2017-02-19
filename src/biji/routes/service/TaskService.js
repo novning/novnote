@@ -29,7 +29,7 @@ var TaskService = {
       callback(result);
     });
   },
-  findByUser:function(userId,callback){
+  findByUserId:function(userId,callback){
     taskData.filter({userId,userId},function(tasks){
       var processData = [];
       if(tasks && tasks.length > 0){
@@ -54,9 +54,6 @@ var TaskService = {
       }
       callback(result);
     });
-  },
-  findList:function(callback){
-    taskData.findAll(callback);
   },
   add:function(model,callback){
     var createTime = new Date().getTime();

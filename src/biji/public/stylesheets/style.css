@@ -104,6 +104,7 @@ body{
     float:right;
     display: inline-block;
     padding-top:15px;
+    margin-right:20px;
 }
 .to-head-arrow{
     position:fixed;
@@ -121,7 +122,7 @@ div{
   -webkit-user-select:none;
   user-select:none;
 }
-.add-input {
+.biji-normal-input {
     border: 2px solid #fff;
     height:26px;
     width:200px;
@@ -129,7 +130,15 @@ div{
     padding-right: 2px;
     vertical-align: bottom;
 }
-.oper-btn {
+.biji-large-input {
+  border: 2px solid #fff;
+  height:40px;
+  line-height: 40px;
+  width:200px;
+  margin:5px 0;
+  padding:5px;
+}
+.biji-normal-btn {
     background-color: #ffa42e;
     border: 2px solid #fff;
     color:#fff;
@@ -138,15 +147,60 @@ div{
     font-size:16px;
     font-weight: bold;
 }
-.oper-btn:hover {
+.biji-normal-btn:hover {
     background-color:#ff941e;
 }
-.oper-btn:active {
+.biji-normal-btn:active {
     position:relative;
     top:1px;
 }
-#add-panel{
-    margin-top:80px;
-    text-align:right;
-    width:90%;
+.biji-fff-btn{
+    color:#ff941e;
+    background-color: #fff;
+    border:1px solid #ff941e;
+    border-style: none;
+    height:20px;
+    width:20%;
+}
+.biji-fff-btn:hover {
+    color: #ffffff;
+    background-color:#ff941e;
+}
+.biji-fff-btn:active {
+    background-color:#ff942e;
+    /*position:relative;
+    top:1px;*/
+}
+.biji-fff-btn:disabled{
+  color:#ffa42e;
+  background-color: #eee;
+}
+
+.biji-normal-link {
+    text-align: center;
+    display: inline-block;
+    background-color: #ffa42e;
+    border: 2px solid #fff;
+    color:#fff;
+    height:26px;
+    width:40px;
+    font-size:16px;
+    font-weight: bold;
+}
+.biji-normal-link:hover {
+    background-color:#ff941e;
+    color:#fff;
+}
+.biji-normal-link:active {
+    position:relative;
+    top:1px;
+}
+.oper-container{
+  margin-top: 100px;
+  text-align: right;
+  padding: 10px;
+}
+#quill-container{
+  width:100%;
+  height:500px;
 }

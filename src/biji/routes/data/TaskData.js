@@ -33,7 +33,7 @@ var TaskData = {
   },
   deleteOne:function(condition,callback){
     DB.deleteOne(this.collection,condition,callback);
-  },
+  }
 
 }
 module.exports = TaskData;

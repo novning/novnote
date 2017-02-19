@@ -7,10 +7,13 @@ block js
 body
 block content
     include head.jade
-    div(id = "add-panel" )
-      input(type="text" class="add-input" placeholder="create",maxlength="50" )
-      button(id = "add-btn" class="oper-btn" )
-        i(class = "material-icons") add
+
+
     div(class = "container")
+      div(class = "oper-container" )
+        input(type="text" class="biji-normal-input" placeholder="create",maxlength="50" )
+        button(id = "add-btn" class="biji-normal-btn" )
+          i(class = "material-icons") add
+      div(class = "content-container")
 
     include moveToHead.jade

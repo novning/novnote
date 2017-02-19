@@ -6,12 +6,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   var user = req.session.user;
-  taskService.findByUser(user._id,function(data){
-    res.send(data);
-  });
-});
-router.get('/list', function(req, res, next) {
-  taskService.findList(function(data){
+  taskService.findByUserId(user._id,function(data){
     res.send(data);
   });
 });
@@ -24,12 +19,6 @@ router.post('/', function(req, res, next) {
   });
 });
 
-router.put('/done/:id',function(req,res,next){
-  var id = req.params.id;
-  taskService.taskDone(id,function(e){
-    res.send(e);
-  })
-});
 router.put('/order',function(req,res,next){
   var tasks = req.body;
   taskService.updateOrder(tasks,function(e){
@@ -39,7 +28,6 @@ router.put('/order',function(req,res,next){
 
 router.put('/updateTime',function(req,res,next){
   var model = req.body;
-
   taskService.updateTime(model,function(e){
     res.send(e);
   });

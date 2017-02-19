@@ -1,6 +1,7 @@
 var express = require('express');
+var userService = require('./service/UserService');
+
 var router = express.Router();
-var userService = require('./service/userService');
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
