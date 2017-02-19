@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var index = require('./routes/index');
 var backend = require('./routes/backend');
@@ -14,6 +15,7 @@ var user = require('./routes/user');
 var task = require('./routes/task');
 var taskDetail = require('./routes/taskDetail');
 var playground = require('./routes/playground');
+var config = require('./routes/common/config');
 
 
 var app = express();
@@ -37,6 +39,17 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(session({
+  name: config.session().key,// 设置 cookie 中保存 session id 的字段名称
+  secret: config.session().secret,// 通过设置 secret 来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改
+  cookie: {
+    maxAge: config.session().maxAge// 过期时间，过期后 cookie 中的 session id 自动删除
+  },
+  store: new MongoStore({// 将 session 存储到 mongodb
+    url: config.mongodb()// mongodb 地址
+  })
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login', login);

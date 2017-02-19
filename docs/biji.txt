@@ -5,9 +5,16 @@ biji
 技术栈
   JQuery
   Quill
+
   Express
   monment.js
+  winston
+  supervisor
+  config-lite
+  connect-mongo
+  
   MongoDB
+
   node-inspector
 
 运行环境
@@ -15,8 +22,12 @@ biji
   反向代理 nginx
   Node.js
 
+后端自动部署
+npm install -g supervisor
+supervisor ./bin/www
 
-代码优化
+
+mongdb Imp/Exp
 
 ./mongoimport -d my_mongodb -c user user.dat
 ./mongoexport -d ningbiji -c user -o user.json

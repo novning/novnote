@@ -1,9 +1,10 @@
 var mongo = require('mongodb');
 var objectid = require('objectid')
+var config = require('../common/config');
 
 var DB = {
   mongo:mongo.MongoClient,
-  url:'mongodb://172.16.18.129:27017/ningbiji',
+  url:config.mongodb(),
   conn:function(collection,callback){
     this.mongo.connect(this.url,function(err,db){
       var col = db.collection(collection);
