@@ -1,10 +1,12 @@
 var express = require('express');
-var router = express.Router();
 var taskService = require('./service/TaskService');
+var router = express.Router();
+
 
 
 router.get('/', function(req, res, next) {
-  taskService.findAll(function(data){
+  var user = req.session.user;
+  taskService.findByUser(user._id,function(data){
     res.send(data);
   });
 });
@@ -16,7 +18,7 @@ router.get('/list', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var model = req.body;
-  console.info(model);
+  model.userId = req.session.user._id;
   taskService.add(model,function(data){
     res.send(data);
   });
@@ -35,11 +37,10 @@ router.put('/order',function(req,res,next){
   })
 });
 
-router.put('/update/:id/:value',function(req,res,next){
-  var id = req.params.id;
-  var value = req.params.value;
+router.put('/updateTime',function(req,res,next){
+  var model = req.body;
 
-  taskService.updateTakeTime(id,value,function(e){
+  taskService.updateTime(model,function(e){
     res.send(e);
   });
 });
@@ -53,7 +54,7 @@ router.put('/:id',function(req,res,next){
 
 router.delete('/:id',function(req,res,next){
   var id = req.params.id;
-  taskService.deleteOne(id,function(e){
+  taskService.deleteById(id,function(e){
     res.send(e);
   });
 });

@@ -1,0 +1,11 @@
+#container {
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width:100%;
+}
+#oper-container{
+  text-align: right;
+  padding: 10px;
+}

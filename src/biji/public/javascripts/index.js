@@ -27,7 +27,7 @@ $(document).ready(function(){
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
         initTask();
-        $("#add-input").empty();
+        $(".add-input").val("");
       });
     }
   });

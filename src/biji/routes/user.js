@@ -10,7 +10,8 @@ router.put('/', function(req, res, next) {
   var model = req.body;
   userService.updatePassword(model,function(e){
     res.send(e);
-  })
+  });
 });
+
 
 module.exports = router;

@@ -1,0 +1,17 @@
+extends layout
+block css
+  link(rel='stylesheet', href='/stylesheets/register.css')
+block js
+  script(src='/javascripts/register.js')
+body
+block content
+  div(class="register-container")
+    div
+      input(type="text" id = "name" class="biji-input" placeholder="用户名",maxlength="20" )
+    div
+      input(type="password" id = "password" class="biji-input" placeholder="密码",maxlength="20" )
+    div
+      input(type="password" id = "passwordConfirm" class="biji-input" placeholder="密码确认",maxlength="20" )
+    div(id="reg-panel")
+      button(id = "register" class="reg-btn") 注册
+    div(id = "message" style="color:red;height:30px;")

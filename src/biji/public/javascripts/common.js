@@ -60,7 +60,39 @@
                 data: JSON.stringify(model)
             });
             return jQuery.ajax(options);
+        },
+        asyncPut: function (url, model, options) {
+            opts = $.extend({}, {
+                async: true,
+                type: 'PUT',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: url,
+                data: JSON.stringify(model)
+            }, options || {});
+            return jQuery.ajax(opts);
+        },
+        asyncPost: function (url, model, options) {
+            var opts = $.extend({}, {
+                async: true,
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: url,
+                data: JSON.stringify(model)
+            }, options || {});
+            return jQuery.ajax(opts);
+        },
+        asyncGet: function (url, options) {
+            var opts = $.extend({}, {
+                async: true,
+                type: 'GET',
+                dataType: 'json',
+                url: url
+            }, options || {});
+            return jQuery.ajax(opts);
         }
+
     };
     // 对Date的扩展，将 Date 转化为指定格式的String
     // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，

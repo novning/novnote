@@ -9,18 +9,25 @@ router.get('/', function(req, res, next) {
 
 router.put('/', function(req, res, next) {
   var user = req.body;
-  userService.login(user,function(loginUser){
-    console.log(loginUser);
-      if(loginUser != null){
+  if(user.name.length > 20 || user.password.length > 20){
+      res.send({code:1,result:"login failed",message:"内容过长"});
+  }else{
+
+    userService.login(user,function(loginUser){
+        if(loginUser != null){
           //login success
           console.log("success");
           req.session.user = loginUser;
           res.send({code:0,result:"success"});
-      }else{
-          res.send({code:1,result:"login failed"});
-      }
 
-  });
+        }else{
+            res.send({code:1,result:"login failed"});
+        }
+
+    });
+
+  }
+
 });
 
 router.get('/exit', function(req, res, next) {

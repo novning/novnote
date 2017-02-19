@@ -1,3 +1,7 @@
+#login-logo{
+  color:#ffffff;
+  font-size:45px;
+}
 .biji-input {
   border: 2px solid #fff;
   height:40px;
@@ -6,21 +10,31 @@
   margin:5px 0;
   padding:5px;
 }
-.btn-large{
-    background-color: #ffa42e;
-    color:#ffffff;
-    border-style: none;
+.oper-link{
+    display: inline-block;
+    color: #ff941e;
+    background-color: #fff;
+    border: 1px solid #ff941e;
     border-radius: 3px;
     margin:2px;
-    height:50px;
-    width:100px;
+    width:95px;
+    text-align: center;
+    padding:5px;
 }
 
-#login{
-    padding:10px 20px;
+.oper-link:hover{
+    color:#fff;
+    background-color: #ffa42e;
 }
+.oper-link:active{
+    position:relative;
+    top:1;
+}
+
 .login-container{
-  position:fixed;
-  top:40%;
-  left:40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:10%;
+  text-align: center;
+
 }

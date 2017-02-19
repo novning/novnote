@@ -31,33 +31,20 @@ $(document).ready(function(){
   function renderTask(task){
     var createTime = new Date(task.createTime).format("yyyy/MM/dd");
     var startTime;
-    var doneTime;
-    var status;
+
     if(task.startTime == null){
       startTime = "";
     }else{
         startTime = new Date(task.startTime).format("yyyy/MM/dd");
     }
-    if(task.doneTime == null){
-      doneTime = "";
-    }else{
-        doneTime = new Date(task.doneTime).format("yyyy/MM/dd");
-    }
 
-    if(task.status == 0){
-      status = "创建";
-    }else if(task.status == 1){
-      status = "开始";
-    }else{
-      status = "完成";
-    }
+
     return '<tr id = "' + task._id + '" class = "task">' +
         '<td><input type = "text" class = "taskName" value = "' + task.name + '" /></td>' +
         '<td>' + createTime + '</td>' +
         '<td>' + startTime + '</td>' +
-        '<td>' + doneTime + '</td>' +
+        '<td>' + task.updateTime + '</td>' +
         '<td>' + task.takeTime  + ' h</td>' +
-        '<td>' + status + '</td>' +
         '<td>' +
             '<button class="edit-btn oper-btn"><i class = "material-icons ">edit</i></button>' +
         '</td>' +
@@ -81,16 +68,6 @@ $(document).ready(function(){
       });
     }
   });
-  $("#add-btn").click(function(){
-    var name = $(".add-input").val();
-    if(name != ""){
-      restful.post("/task",{name:name}).success(function(e){
-        initTask();
-        $("#add-input").empty();
-      });
-    }
-  });
 
 
-  initTask();
 });

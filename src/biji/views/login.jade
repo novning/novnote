@@ -6,10 +6,16 @@ block js
 body
 block content
   div(class = "login-container")
+    div
+      span(id = "login-logo")
+        a(href = "/")
+          i(class = "material-icons" ) explore
+          span() snshine
+    div
+      input(type="text",class="biji-input",placeholder="username",id = "name",value = "admin",maxlength="20")
+    div
+      input(type = "password",class = "biji-input",id = "password",value = "admin",placeholder = "password",maxlength="20")
+    div()
+      a(id = "register",class = "oper-link" href = "/register") Register
+      a(id = "login",class = "oper-link" href = "#") Login
     div(id = "message" style="color:red;height:30px;")
-    div
-      input(type="text",class="biji-input",placeholder="username",id = "name",value = "admin")
-    div
-      input(type = "password",class = "biji-input",id = "password",value = "admin",placeholder = "password" )
-    div(style="text-align:right")
-      button(id = "login",class = "btn-large") Login

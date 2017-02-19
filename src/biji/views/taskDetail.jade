@@ -1,0 +1,37 @@
+extends layout
+block css
+  link(rel='stylesheet', href='/stylesheets/taskDetail.css')
+block js
+  script(src='/javascripts/taskDetail.js')
+body
+block content
+    include head.jade
+    div(class = "container", taskId=task._id)
+      div(id="task" class = "task")
+        div(class="delele-panel")
+          button(class = "delete-btn delTask", id=task._id) 删除
+        table
+          tr
+            td(class = "th") 项&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目：
+            td() #{task.name}
+          tr
+            td(class = "th") 开始时间：
+            td() #{task.startTime}
+            tr
+              td(class = "th") 更新时间：
+              td() #{task.updateTime}
+          tr
+            td(class = "th") 使用时间：
+            td() #{task.takeTime} 小时
+          tr
+            td(class = "th") 更新次数：
+            td() #{task.updateCount}
+
+      div(class = "detail-container")
+        each val, index in task.detail
+          div(class = "detail")
+            div(class="delele-panel")
+              <!--button(class = "delete-btn del",id=val._id) 删除 -->
+            div(class = "content") #{val.content}
+            div(class = "time-message") 使用时间：#{val.takeTime} 小时&nbsp;&nbsp;创建时间：#{val.createTime}
+    include moveToHead.jade

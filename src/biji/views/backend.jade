@@ -6,25 +6,11 @@ block js
 body
 block content
   include head.jade
-  div(id = "add-panel" )
-    input(type="text" class="add-input" placeholder="create" )
-    button(id = "add-btn" class="oper-btn" )
-      i(class = "material-icons") add
   div(class="container")
     div(id="userSetting")
-      input(type="password" id = "oldPwd" class="pwd-input" placeholder="旧密码" )
-      input(type="password" id = "newPwd" class="pwd-input" placeholder="新密码" )
-      input(type="password" id = "newPwdConfirm" class="pwd-input" placeholder="新密码确认" )
+      input(type="password" id = "oldPwd" class="pwd-input" placeholder="旧密码",maxlength="20" )
+      input(type="password" id = "newPwd" class="pwd-input" placeholder="新密码",maxlength="20" )
+      input(type="password" id = "newPwdConfirm" class="pwd-input" placeholder="新密码确认",maxlength="20" )
       button(id = "updatePwdBtn" class="oper-btn") 修改密码
-    table(id="task")
-      tr
-        th 名称
-        th 创建时间
-        th 开始时间
-        th 完成时间
-        th 使用时间
-        th 状态
-        th 更新
-        th 删除
 
   include moveToHead.jade

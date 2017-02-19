@@ -1,113 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>文档的标题</title>
+    <title>backend</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" media = "all" href="style.css">
-    <link rel="stylesheet" media = "all" href="backend.css">
-    <link rel="stylesheet" media = "all" href="index.css">
-    <style>
-        
-        table {
-	font-family: verdana,arial,sans-serif;
-	font-size:15px;
-	color:#333333;
-/*
-	border-width: 1px;
-	border-color: #666666;
-*/
-	border-collapse: collapse;
-}
-table th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #ffffff;
-	background-color: #ffa42e;
-    color:#ffffff;
-}
-table td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #ffffff;
-	background-color: #eeeeee;
-}
-    </style>
-    
-    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/backend.css">
+    <script src="/javascripts/lib/jquery.js"></script>
+    <script src="/javascripts/common.js"></script>
+    <script src="/javascripts/backend.js"></script>
 </head>
 
 <body>
-
-    <div id = "nav">
-        <span id = "logo">
-            <i class = "material-icons">explore</i> snshine
-        </span>
-        <span id = "nav-panel">
-            <a href = "#"><i class = "material-icons ">settings</i></a>
-            <a href = "#"><i class = "material-icons ">exit_to_app</i></a>
-        </span>
-    </div>
-    <div id = "search-panel">
-        <input type="text" class="add-input" placeholder="create" /><button id = "add-btn" class="add-btn"><i class = "material-icons ">add</i></button>
-    </div>
-    <div class = "container">
-        <table style="border:1px solid black;margin:30px auto;">
-            <tr>
-                <th>名称</th>
-            <th>创建时间</th>
-            <th>开始时间</th>
-            <th>完成时间</th>
-            <th>使用时间</th>
-            <th>状态</th>
-            <th>更新</th>
-            <th>删除</th>
-            </tr>
-            <tr>
-                <td>a</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
-                <td>
-                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
-                </td>
-                <td>
-                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>a</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
-                <td>
-                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
-                </td>
-                <td>
-                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>晚来天欲雪能饮一杯无落花有意流水无情</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
-                <td>
-                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
-                </td>
-                <td>
-                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>a</td><td>bb</td><td>bb</td><td>cc</td><td>dd</td><td>ee</td>
-                <td>
-                    <button id = "add-btn" class="add-btn"><i class = "material-icons ">edit</i></button>
-                </td>
-                <td>
-                <button id = "add-btn" class="add-btn"><i class = "material-icons ">delete</i></button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id = "toHeadArrow" class = "to-head-arrow">
-        <a href = "#"><i class = "material-icons md-50">arrow_upward</i></a>
-    </div>
+    <div id="nav"><span id="logo"><a href="/"><i class="material-icons">explore</i><span>snshine</span></a>
+        </span><span id="nav-panel"><a href="/"><i class="material-icons">home</i></a><a href="/article"><i class="material-icons">mode_edit</i></a><a href="/backend"><i class="material-icons">dehaze</i></a><a href="/login/exit"><i class="material-icons">exit_to_app</i></a></span></div>
+    <div
+        id="add-panel"><input type="text" placeholder="create" class="add-input"><button id="add-btn" class="oper-btn"><i class="material-icons">add</i></button></div>
+        <div class="container">
+            <div id="userSetting"><input type="password" id="oldPwd" placeholder="旧密码" class="pwd-input"><input type="password" id="newPwd" placeholder="新密码" class="pwd-input"><input type="password" id="newPwdConfirm" placeholder="新密码确认" class="pwd-input"><button id="updatePwdBtn"
+                    class="oper-btn">修改密码</button></div>
+            <table id="task">
+                <tbody>
+                    <tr>
+                        <th>名称</th>
+                        <th>创建时间</th>
+                        <th>开始时间</th>
+                        <th>完成时间</th>
+                        <th>使用时间</th>
+                        <th>状态</th>
+                        <th>更新</th>
+                        <th>删除</th>
+                    </tr>
+                    <tr id="58a65d6a8eb86950ef199c02" class="task">
+                        <td><input type="text" class="taskName" value="深入理解计算机系统1"></td>
+                        <td>2017/02/17</td>
+                        <td></td>
+                        <td></td>
+                        <td>0 h</td>
+                        <td>创建</td>
+                        <td><button class="edit-btn oper-btn"><i class="material-icons ">edit</i></button></td>
+                        <td><button class="delete-btn oper-btn"><i class="material-icons ">delete</i></button></td>
+                    </tr>
+                    <tr id="58a65d6a8eb86950ef199c03" class="task">
+                        <td><input type="text" class="taskName" value="深入理解计算机系统2"></td>
+                        <td>2017/02/17</td>
+                        <td></td>
+                        <td></td>
+                        <td>0 h</td>
+                        <td>创建</td>
+                        <td><button class="edit-btn oper-btn"><i class="material-icons ">edit</i></button></td>
+                        <td><button class="delete-btn oper-btn"><i class="material-icons ">delete</i></button></td>
+                    </tr>
+                    <tr id="58a65d6a8eb86950ef199c04" class="task">
+                        <td><input type="text" class="taskName" value="深入理解计算机系统3"></td>
+                        <td>2017/02/17</td>
+                        <td></td>
+                        <td></td>
+                        <td>0 h</td>
+                        <td>创建</td>
+                        <td><button class="edit-btn oper-btn"><i class="material-icons ">edit</i></button></td>
+                        <td><button class="delete-btn oper-btn"><i class="material-icons ">delete</i></button></td>
+                    </tr>
+                    <tr id="58a65d6a8eb86950ef199c05" class="task">
+                        <td><input type="text" class="taskName" value="跑步100公里"></td>
+                        <td>2016/02/03</td>
+                        <td></td>
+                        <td></td>
+                        <td>0 h</td>
+                        <td>创建</td>
+                        <td><button class="edit-btn oper-btn"><i class="material-icons ">edit</i></button></td>
+                        <td><button class="delete-btn oper-btn"><i class="material-icons ">delete</i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="toHeadArrow" class="to-head-arrow"><a href="#"><i class="material-icons md-50">arrow_upward</i></a></div>
 </body>
-    
-    
+
 </html>

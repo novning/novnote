@@ -1,64 +1,119 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>文档的标题</title>
+    <title>Biji</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    <link rel="stylesheet" media="mediatype and|not|only (media feature)" href="style.css">-->
-    <link rel="stylesheet" media = "all" href="style.css">
-    <link rel="stylesheet" media = "all" href="index.css">
-    <link rel="stylesheet" media="screen and (min-width: 960px)" href="index-screen.css">
-    <link rel="stylesheet" media="screen and (max-width:959px)" href="index-mobile.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script src="/javascripts/lib/jquery.js"></script>
+    <script src="/javascripts/common.js"></script>
+    <script src="/javascripts/bijiPanel.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <style>
     
-    <script src="jquery.js"></script>
+    </style>
 </head>
 
 <body>
 
-    <div id = "nav">
-        <span id = "logo">
-            <i class = "material-icons">explore</i> snshine
-        </span>
-        <span id = "nav-panel">
-            <a href = "#"><i class = "material-icons ">settings</i></a>
-            <a href = "#"><i class = "material-icons ">exit_to_app</i></a>
-        </span>
-    </div>
-    <div id = "search-panel">
-        <input type="text" class="search-input" placeholder="search&create" /><button id = "search-btn" class="search-btn"><i class = "material-icons ">search</i></button>
-    </div>
-    <div class = "container" >
-        <div class = "sprint">
-            <div id = "2017" class = "dimension timeline" style="font-size:25px;">
-                <i class = "material-icons ">hourglass_empty</i> 2017
-            </div>
-            <div class = "task_panel" >
-                <div class = "title">深入理解计算机系统ahahas</div>
-                <div>
-                    <i class = "material-icons md-25s">timeline</i>        
-                    <span id = "startTime">2016/1/1</span> ~ <span id = "doneTime">N/A</span>
+    <body>
+        <div id="nav"><span id="logo"><a href="/"><i class="material-icons">explore</i><span>snshine</span></a>
+            </span><span id="nav-panel"><a href="/"><i class="material-icons">home</i></a><a href="/article"><i class="material-icons">mode_edit</i></a><a href="/backend"><i class="material-icons">dehaze</i></a><a href="/login/exit"><i class="material-icons">exit_to_app</i></a></span></div>
+        <div
+            id="add-panel"><input type="text" placeholder="create" class="add-input"><button id="add-btn" class="oper-btn"><i class="material-icons">add</i></button></div>
+            <div class="container">
+                <div class="sprint" id="2017">
+                    <div class="dimension timeline"><i class="material-icons md-40">hourglass_empty</i><span class="sprint-year">2017</span>
+                        <div class="orderSetting"><button class="btn btn-orderSetting">排序</button></div>
+                    </div>
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c02" index="0">
+                        <div class="title lh">深入理解计算机系统1</div>
+                        <div class="operator"><button class="btn done">完成</button><button class="btn upd swap" data-operation="+"><i class="material-icons md-15">loop</i></button><button class="btn upd updateTime" data-time="5">+5</button><button class="btn upd updateTime"
+                                data-time="3">+3</button><button class="btn upd updateTime" data-time="1">+1</button></div>
+                        <div>
+                            <textarea style="width:100%;height:60px;resize: none;border-color:#ffa42e">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c03" index="1">
+                        <div class="title lh">深入理解计算机系统2</div>
+                        <div class="lh"><i class="material-icons md-25">timeline</i><span class="startTime"></span> ~ <span class="doneTime"></span></div>
+                        <div class="lh"><i class="material-icons md-25">query_builder</i><span class="takeTime">0 h</span></div>
+                        <div class="operator"><button class="btn done">完成</button><button class="btn upd swap" data-operation="+"><i class="material-icons md-15">loop</i></button><button class="btn upd updateTime" data-time="5">+5</button><button class="btn upd updateTime"
+                                data-time="3">+3</button><button class="btn upd updateTime" data-time="1">+1</button></div>
+                    </div>
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c04" index="2">
+                        <div class="title lh">深入理解计算机系统3</div>
+                        <div class="lh"><i class="material-icons md-25">timeline</i><span class="startTime"></span> ~ <span class="doneTime"></span></div>
+                        <div class="lh"><i class="material-icons md-25">query_builder</i><span class="takeTime">0 h</span></div>
+                        <div class="operator"><button class="btn done">完成</button><button class="btn upd swap" data-operation="+"><i class="material-icons md-15">loop</i></button><button class="btn upd updateTime" data-time="5">+5</button><button class="btn upd updateTime"
+                                data-time="3">+3</button><button class="btn upd updateTime" data-time="1">+1</button></div>
+                    </div>
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c04" index="2">
+                        <div class="title lh">深入理解计算机系统3</div>
+                        <div class="lh"><i class="material-icons md-25">timeline</i><span class="startTime"></span> ~ <span class="doneTime"></span></div>
+                        <div class="lh"><i class="material-icons md-25">query_builder</i><span class="takeTime">0 h</span></div>
+                        <div class="operator"><button class="btn done">完成</button><button class="btn upd swap" data-operation="+"><i class="material-icons md-15">loop</i></button><button class="btn upd updateTime" data-time="5">+5</button><button class="btn upd updateTime"
+                                data-time="3">+3</button><button class="btn upd updateTime" data-time="1">+1</button></div>
+                    </div>
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c04" index="2">
+                        <div class="title lh">深入理解计算机系统3</div>
+                        <div class="lh"><i class="material-icons md-25">timeline</i><span class="startTime"></span> ~ <span class="doneTime"></span></div>
+                        <div class="lh"><i class="material-icons md-25">query_builder</i><span class="takeTime">0 h</span></div>
+                        <div class="operator"><button class="btn done">完成</button><button class="btn upd swap" data-operation="+"><i class="material-icons md-15">loop</i></button><button class="btn upd updateTime" data-time="5">+5</button><button class="btn upd updateTime"
+                                data-time="3">+3</button><button class="btn upd updateTime" data-time="1">+1</button></div>
+                    </div>
                 </div>
-                <div>
-                    <i class = "material-icons md-25s">query_builder</i>        
-                    <span id = "takeTime">29 hour</span>
+                <div class="sprint" id="2016">
+                    <div class="dimension timeline"><i class="material-icons md-40">hourglass_empty</i><span class="sprint-year">2016</span>
+                        <div class="orderSetting"><button class="btn btn-orderSetting">排序</button></div>
+                    </div>
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c02" index="0">
+                        <div class="title lh">深入理解计算机系统1深入理解计算机系统1深入理解计算机机
+                            <div>
+                                <button class="btn upd updateTime"data-time="3" style="">记录</button>
+                            </div>
+                        </div>
+                        
+                        <div class="operator">
+                            <button class="btn done">7</button><button class="btn upd swap" data-operation="+">5</button><button class="btn upd updateTime" data-time="5">3</button><button class="btn upd updateTime"data-time="3">2</button><button class="btn upd updateTime" data-time="1">1</button>
+                        </div>
+                        <div>
+                            <textarea style="width:100%;height:60px;resize: none;border-color:#ffa42e">
+                            </textarea>
+                        </div>
+                        <div style="text-align:right">
+                            <button class="btn upd updateTime"data-time="3">提交</button>
+                        </div>
+                    </div>
+                    
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c02" index="0">
+                        <div class="title lh">深入理解计算机系统1深入理解计算机系统1深入理解计算机系统1
+                            <div>
+                                <button class="btn upd updateTime"data-time="3" style="">记录</button>
+                            </div>
+                        </div>
+                        <div class="operator">
+                            <button class="btn done">7</button><button class="btn upd swap" data-operation="+">5</button><button class="btn upd updateTime" data-time="5">3</button><button class="btn upd updateTime"data-time="3">2</button><button class="btn upd updateTime" data-time="1">1</button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c02" index="0">
+                        <div class="title lh">深入理解计算机系统1</div>
+                    </div>
+                    
+                    <div class="task_panel" id="58a65d6a8eb86950ef199c02" index="0" style="color:#356;background-color:#fff">
+                        <div style="text-align:center;">深入理解计算机系统1深入理解计算机系统1深入理解计算机系统1</div>
+                    </div>
                 </div>
-                <div class = "operator">
-                    <button id = "done" class="btn">完成</button>
-                    <button id = "operationSwap" class="btn">
-                        <i class = "material-icons md-15">loop</i>
-                    </button>
-                    <button id = "update5" class="btn">+5</button>
-                    <button id = "update3" class="btn">+3</button>
-                    <button id = "update1" class="btn">+1</button>
-                </div>    
             </div>
-        </div>
-    </div>
-    <div id = "toHeadArrow" class = "to-head-arrow">
-        <a href = "#"><i class = "material-icons md-50">arrow_upward</i></a>
-    </div>
+            <div id="toHeadArrow" class="to-head-arrow"><a href="#"><i class="material-icons md-50">arrow_upward</i></a></div>
+    </body>
 </body>
-    
-    
+
 </html>
+

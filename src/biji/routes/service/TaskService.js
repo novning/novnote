@@ -1,9 +1,36 @@
 
 var taskData = require('../data/taskData');
+var taskDetailData = require("../data/taskDetailData");
 
-var taskService = {
+var TaskService = {
   findAll:function(callback){
     taskData.findAll(function(tasks){
+      var processData = [];
+      if(tasks && tasks.length > 0){
+        //group by updateTime.getFullYear
+        for(var i = 0;i < tasks.length;i++){
+          var task = tasks[i];
+          var taskUpdateYear = new Date(task.updateTime).getFullYear();
+          if(!processData[taskUpdateYear]){
+            processData[taskUpdateYear] = [];
+          }
+          processData[taskUpdateYear].push(task);
+        }
+        //format
+        var result = [];
+        for(var t in processData){
+          var sortProcessData = processData[t].sort(function(a,b){return a.order>b.order?-1:1});
+          result.push({year:t,task:sortProcessData});
+
+        }
+        //order by year
+        result.sort(function(a,b){return a.year>b.year?-1:1});
+      }
+      callback(result);
+    });
+  },
+  findByUser:function(userId,callback){
+    taskData.filter({userId,userId},function(tasks){
       var processData = [];
       if(tasks && tasks.length > 0){
         //group by updateTime.getFullYear
@@ -36,9 +63,8 @@ var taskService = {
     model.createTime = createTime;
     model.updateTime = createTime;
     model.takeTime = 0;
-    model.status = 0;
     model.order = createTime;
-    taskData.add(model,function(insertCount){
+    taskData.add(model,function(insertCount,_id){
       if(insertCount > 0){
         callback({code:0,result:"success"});
       }else{
@@ -55,50 +81,40 @@ var taskService = {
       }
     });
   },
-  taskDone:function(id,callback){
-    var doneTime = new Date().getTime();
-    taskData.taskDone({_id:id},
-      {status:2,
-        updateTime:doneTime,
-      doneTime:doneTime},function(e){
-        if(e > 0){
-          callback({code:0,result:"success",value:doneTime});
-        }else{
-          callback({code:1,result:"fail",value:""});
-        }
-      });
-  },
-  updateTakeTime:function(id,value,callback){
-    taskData.findOne(id,function(docs){
+  updateTime:function(model,callback){
+    var time = new Date().getTime();
+    taskData.findOne(model.id,function(docs){
       if(docs != null){
-        var orginalValue = parseFloat(docs.takeTime);
-        var v = parseFloat(value);
-        var updateValue = orginalValue + v;
-        var updateField = {takeTime:updateValue};
-        if(docs.startTime == null){
-          updateField.startTime = new Date().getTime();
-          updateField.status = 1;
+        var v = parseFloat(model.takeTime);
+        var taskDetail = {
+          taskId:model.id,
+          createTime:time,
+          takeTime:v,
+          content:model.content
         }
-        if(updateValue < 0){
-            updateValue = 0;
-        }
-        taskData.updateTakeTime({_id:id},updateField,
-          function(updateResult){
-            var callbackParam = {};
-            if(updateResult > 0){
-              callbackParam.code = 0;
-              callbackParam.result = "success";
-              callbackParam.value = updateValue;
-            }else{
-              callbackParam.code = 1;
-              callbackParam.result = "fail";
-              callbackParam.value = orginalValue;
+        taskDetailData.add(taskDetail,function(insertResult,_id){
+          if(insertResult > 0){
+            var orginalValue = parseFloat(docs.takeTime);
+            var updateValue = orginalValue + v;
+            if(updateValue < 0){
+                updateValue = 0;
             }
-            if(updateField.startTime){
-              callbackParam.startTime = updateField.startTime;
+            var updateField = {takeTime:updateValue,updateTime:time};
+            if(docs.startTime == null){
+              updateField.startTime = new Date().getTime();
             }
-            callback(callbackParam);
+
+            taskData.updateTakeTime({_id:model.id},updateField,function(e){
+                if(e > 0){
+                  callback({code:0,result:"success"});
+                }else{
+                  callback({code:1,result:"fail"});
+                }
+            });
+          }
         });
+
+
       }
     });
   },
@@ -114,10 +130,12 @@ var taskService = {
     }
     callback({code:0,result:"success"});
   },
-  deleteOne:function(id,callback){
+  deleteById:function(id,callback){
     taskData.deleteOne({_id:id},function(e){
       if(e > 0){
-        callback({code:0,result:"success"});
+        taskDetailData.deleteMany({taskId:id},function(detailResult){
+          callback({code:0,result:"success"});
+        });
       }else{
         callback({code:1,result:"fail"});
       }
@@ -125,4 +143,4 @@ var taskService = {
   }
 }
 
-module.exports = taskService;
+module.exports = TaskService;

@@ -55,45 +55,71 @@
 
 body{
     background-color: #eeeeee;
+    color:#356;
     font: normal 100% Helvetica, Arial, sans-serif;
 }
 a{
     text-decoration:none;
-    color:#ffffff;
+    color:#ffa42e;
 }
 a:hover{
-    color:#eee;
+    color:#ffa41e;
 }
 a:active{
-    position:relative;
-    top:1px;
+
 }
 a,input,button{ outline:none; }
 ::-moz-focus-inner{border:0px;}
-.btn{
-    background-color: #ffa42e;
-    color:#ffffff;
-    border-style: none;
-    border-radius: 3px;
-    margin:2px;
-    height:20px;
-    width:17%;
-}
-
-button:hover {
-    background-color:#ff941e;
-}
-button:active {
-    position:relative;
-    top:1px;
-}
-button:disabled{
-  color:#ffa42e;
-  background-color: #eee;
-}
 
 body{
   background-color: #F5F5F5;
+}
+.container{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    min-height:50px;
+    background-color:#ffa42e;
+    z-index:99;
+}
+#nav a{
+  margin: 0 9px;
+  color:#fff;
+}
+#logo{
+  display: inline-block;
+  float:left;
+  color:#ffffff;
+  margin-left:20px;
+  font-size:35px;
+  padding-top:5px;
+}
+#nav-panel{
+    float:right;
+    display: inline-block;
+    padding-top:15px;
+}
+.to-head-arrow{
+    position:fixed;
+    right:20px;
+    bottom:30px;
+    background-color:#ffa42e;
+    color:#fff;
+    border-radius:5px;
+}
+.to-head-arrow a{
+  color:#fff;
+}
+div{
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  user-select:none;
 }
 .add-input {
     border: 2px solid #fff;
@@ -120,52 +146,8 @@ body{
     position:relative;
     top:1px;
 }
-.container{
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-#nav{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:50px;
-    background-color:#ffa42e;
-    z-index:99;
-}
-#nav a{
-  margin: 0 9px;
-}
-#logo{
-    color:#ffffff;
-    margin-left:20px;
-    font-size:35px;
-    display:inline-block;
-    margin-top:5px;
-}
-#nav-panel{
-    position:absolute;
-    top:15px;
-    right:15px;
-}
 #add-panel{
     margin-top:80px;
     text-align:right;
     width:90%;
-}
-.to-head-arrow{
-    position:fixed;
-    right:20px;
-    bottom:30px;
-    background-color:#ffa42e;
-    color:#fff;
-    border-radius:5px;
-}
-div{
-  -moz-user-select:none;
-
-     -webkit-user-select:none;
-
-     user-select:none;  
 }

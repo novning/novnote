@@ -40,31 +40,26 @@ MongoClient.connect(url, function(err, db) {
   //user
   clearCollections(db,"user",function(){db.close();});
   secret.md5("admin",function(secPwd){
-    var data = [{name:"admin",password:secPwd}];
+    var data = [{name:"admin",password:secPwd},{name:"yining",password:secPwd}];
     insertDocuments(db,"user", data,function() {
       db.close();
     });
   })
-
-
-  //taskStatus
-  clearCollections(db,"taskStatus",function(){db.close();});
-  var taskStatus = [{key:0,value:"创建"},{key:1,value:"开始"},{key:1,value:"完成"}];
-  insertDocuments(db,"taskStatus", taskStatus,function() {
-    db.close();
-  });
 
   //task
   clearCollections(db,"task",function(){db.close();});
   var date = new Date().getTime();
   var date2016 = new Date(2016,1,3,10,52,03).getTime();
   var task = [
-    {name:"深入理解计算机系统1",createTime:date,startTime:null,doneTime:null,updateTime:date,takeTime:0,status:0,order:2},
-    {name:"深入理解计算机系统2",createTime:date,startTime:null,doneTime:null,updateTime:date,takeTime:0,status:0,order:1},
-    {name:"深入理解计算机系统3",createTime:date,startTime:null,doneTime:null,updateTime:date,takeTime:0,status:0,order:0},
-    {name:"跑步100公里",createTime:date2016,startTime:null,doneTime:null,updateTime:date2016,takeTime:0,status:0,order:1}];
+    {name:"深入理解计算机系统1",createTime:date,startTime:null,updateTime:date,takeTime:0,order:2,userId:null},
+    {name:"深入理解计算机系统2",createTime:date,startTime:null,updateTime:date,takeTime:0,order:1,userId:null},
+    {name:"深入理解计算机系统3",createTime:date,startTime:null,updateTime:date,takeTime:0,order:0,userId:null},
+    {name:"跑步100公里",createTime:date2016,startTime:null,updateTime:date2016,takeTime:0,order:1,userId:null}];
 
   insertDocuments(db,"task", task,function() {
     db.close();
   });
+
+  //taskDetail
+  clearCollections(db,"taskDetail",function(){db.close();});
 });

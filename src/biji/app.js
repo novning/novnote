@@ -9,9 +9,11 @@ var session = require('express-session');
 var index = require('./routes/index');
 var backend = require('./routes/backend');
 var login = require('./routes/login');
+var register = require('./routes/register');
 var user = require('./routes/user');
 var task = require('./routes/task');
-var article = require('./routes/article');
+var taskDetail = require('./routes/taskDetail');
+var playground = require('./routes/playground');
 
 
 var app = express();
@@ -41,6 +43,7 @@ app.use('/login', login);
 //登陆判断
 app.use(function (req, res, next) {
     if(req.session.user == undefined){
+      console.info(req.path);
       return res.redirect("/login");
     }
     next();
@@ -51,7 +54,9 @@ app.use('/', index);
 app.use('/backend', backend);
 app.use('/user', user);
 app.use('/task', task);
-app.use('/article', article);
+app.use('/taskDetail', taskDetail);
+app.use('/playground', playground);
+app.use('/register', register);//使用登陆判断 禁用注册功能...
 
 
 // catch 404 and forward to error handler

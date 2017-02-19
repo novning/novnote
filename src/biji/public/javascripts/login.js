@@ -20,6 +20,9 @@ $(document).ready(function(){
 }
 
   $("#login").click(login);
+  $("#register").click(function(){
+    restful.get("/register");
+  });
 
 
 });

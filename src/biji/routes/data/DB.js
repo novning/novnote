@@ -1,4 +1,5 @@
 var mongo = require('mongodb');
+var objectid = require('objectid')
 
 var DB = {
   mongo:mongo.MongoClient,
@@ -16,9 +17,11 @@ var DB = {
   },
   add:function(collection,model,callback){
     this.conn(collection,function(col,dbClose){
+      var oid = objectid();
+      model._id = oid;
       col.insertOne(model,function(err,result){
         dbClose();
-        callback(result.insertedCount);
+        callback(result.insertedCount,oid.toString());
       });
     });
   },
@@ -34,7 +37,6 @@ var DB = {
     var that = this;
     this.conn(collection,function(col,dbClose){
       col.find({_id:that.objId(id)}).toArray(function(err,docs){
-
         dbClose();
         if(docs.length > 0){
           callback(docs[0]);
@@ -58,6 +60,7 @@ var DB = {
       if(con._id && con._id != ""){
         con._id = that.objId(con._id);
       }
+
       col.updateOne(con, { $set: updateField }, function(err, res) {
         dbClose();
         callback(res.result.n);
@@ -70,13 +73,25 @@ var DB = {
       if(con._id && con._id != ""){
         con._id = that.objId(con._id);
       }
+      console.info(con);
       col.deleteOne(con, function(err, res) {
+        console.info(err);
         dbClose();
         callback(res.deletedCount);
       });
     });
   },
-
+  deleteMany:function(collection,con,callback){
+    var that = this;
+    this.conn(collection,function(col,dbClose){
+      if(con._id && con._id != ""){
+        con._id = that.objId(con._id);
+      }
+      col.deleteMany(con,function(err,res){
+        dbClose();
+        callback(res.deletedCount);
+      });
+    });
+  }
 }
-
 module.exports = DB;

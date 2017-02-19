@@ -3,7 +3,12 @@ biji
 域名 snshine.com
 
 技术栈
-  JQuery Quill Express MongoDB
+  JQuery
+  Quill
+  Express
+  monment.js
+  MongoDB
+  node-inspector
 
 运行环境
   阿里云 CentOS7
@@ -11,14 +16,7 @@ biji
   Node.js
 
 
+代码优化
 
-table designer
-
-
-  user id name password
-
-  task id name createTime startTime doneTime takeTime status order
-  taskHistory id name createTime startTime doneTime takeTime status order
-  taskStatus id key value(开始，完成)
-
-  article id title content createTime updateTime;
+./mongoimport -d my_mongodb -c user user.dat
+./mongoexport -d ningbiji -c user -o user.json

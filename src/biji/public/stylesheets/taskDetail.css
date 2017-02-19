@@ -1,0 +1,61 @@
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  position:relative;
+}
+.th{
+  font-weight: bold;
+  text-align: right;
+}
+.task{
+  position: relative;
+  width:100%;
+  min-height:100px;
+  background-color: #fff;
+  margin: 20px 0;
+  padding:10px;
+  box-shadow: 0 2px 0 0 rgba(3,5,6,0.25);
+
+}
+.detail{
+  position: relative;
+  width:100%;
+  min-height:100px;
+  background-color: #fff;
+  margin: 20px 0;
+  padding:10px;
+  box-shadow: 0 2px 0 0 rgba(3,5,6,0.25);
+}
+.content{
+  margin-bottom: 50px;
+}
+
+.delete-btn{
+  position: absolute;
+  top:5px;
+  right:3px;
+  color: #ff941e;
+  background-color: #fff;
+  border: 1px solid #ff941e;
+  border-style: none;
+  height: 20px;
+  width: 40px;
+}
+.delete-btn:hover {
+    color: #ffffff;
+    background-color:#ff941e;
+}
+.delete-btn:active {
+    background-color:#ff942e;
+    /*position:relative;
+    top:1px;*/
+}
+.time-message{
+  color:#999;
+  font-size: 13px;
+  text-align: right;
+  position:absolute;
+  bottom:10px;
+  right:10px;
+}

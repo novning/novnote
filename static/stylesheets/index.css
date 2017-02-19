@@ -1,0 +1,50 @@
+.timeline{
+    color:#373737;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.25);
+    position:relative;
+}
+
+.task_panel{
+    font-size: 15px;
+    width:23%;
+    min-width:230px;
+    background-color: #fff;
+    margin:10px;
+    padding:10px;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,0.25);
+    display: inline-block;
+    vertical-align: top;
+}
+.task_panel .title{
+    margin-bottom: 5px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.25);
+}
+.operator{
+    
+}
+.sprint-year{
+  font-size:25px;
+  vertical-align: bottom;
+}
+.takeTime{
+  margin-left: 5px;
+}
+.startTime{
+  margin-left: 5px;
+}
+.lh{
+  
+}
+.orderSetting{
+  position:absolute;
+  top:10px;
+  right:5px;
+
+}
+.btn-orderSetting{
+  width:50px;
+  height:20px;
+  
+}

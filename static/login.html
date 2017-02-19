@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>文档的标题</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    <link rel="stylesheet" media="mediatype and|not|only (media feature)" href="style.css">-->
-    <link rel="stylesheet" media = "all" href="style.css">
-    <link rel="stylesheet" media = "all" href="login.css">
-    <link rel="stylesheet" media="screen and (min-width: 960px)" href="login-screen.css">
-    <link rel="stylesheet" media="screen and (max-width:959px)" href="login-mobile.css">
-
-    <script src="jquery.js"></script>
-</head>
-
-<body>
-    <div class = "container">
-        <div id = "message"></div>
-        <div>
-            <input type="text" class="biji-input" placeholder="username" />
-        </div>
-        <div>
-            <input type = "password" class = "biji-input" id = "password" placeholder = "password" />
-        </div>
-        <div style="text-align:right">
-            <button id = "login" class = "btn">Login</button>
-        </div>
+    <head>
+        <title>Login</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/login.css">
+        <script src="/javascripts/lib/jquery.js"></script>
+        <script src="/javascripts/common.js"></script>
+        <script src="/javascripts/login.js"></script>
+    </head><body><div class="login-container">
+    <div id="message" style="color:red;height:30px;">
     </div>
-</body>
-
-
+    <div><input type="text" placeholder="username" id="name" value="admin" class="biji-input"></div>
+    <div><input type="password" id="password" value="admin" placeholder="password" class="biji-input"></div>
+    <div style="text-align:right"><button id="login" class="btn-large">Login</button></div>
+    </div>
+    </body>
 </html>
