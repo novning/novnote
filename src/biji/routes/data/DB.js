@@ -1,10 +1,10 @@
 var mongo = require('mongodb');
 var objectid = require('objectid')
-var config = require('../common/config');
+var config = require('../common/config').c();
 
 var DB = {
   mongo:mongo.MongoClient,
-  url:config.mongodb(),
+  url:config.mongodb,
   conn:function(collection,callback){
     this.mongo.connect(this.url,function(err,db){
       var col = db.collection(collection);

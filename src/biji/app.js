@@ -16,7 +16,7 @@ var task = require('./routes/task');
 var taskDetail = require('./routes/taskDetail');
 var playground = require('./routes/playground');
 var note = require('./routes/note');
-var config = require('./routes/common/config');
+var config = require('./routes/common/config').c();
 
 
 var app = express();
@@ -36,19 +36,14 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(session({
-  secret: 'no secret hehe', //??
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(session({
   name: config.session.key,// 设置 cookie 中保存 session id 的字段名称
   secret: config.session.secret,// 通过设置 secret 来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改
   cookie: {
     maxAge: config.session.maxAge// 过期时间，过期后 cookie 中的 session id 自动删除
   },
-  store: new MongoStore({// 将 session 存储到 mongodb
-    url: config.mongodb()// mongodb 地址
-  })
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({ url: config.mongodb,ttl: 14 * 24 * 60 * 60})
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
