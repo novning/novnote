@@ -24,7 +24,6 @@ $(document).ready(function(){
     }
     $(".del").click(function(){
       var id = $(this).parent().attr("data-id");
-      console.info(id);
       restful.destroy("/note/" + id).success(function(e){
         console.info(e);
         initNote();
@@ -33,11 +32,11 @@ $(document).ready(function(){
   }
 
   function renderNote(note){
-    return '<div class = "note">' +
+    return '<div class = "panel">' +
       '<div class = "title"><a href = "/note/detail/' + note._id + '">' + note.title +  '</a></div>' +
       '<div class = "oper" data-id = "' + note._id + '">' +
-      '<span class = "createTime">创建时间：' + note.createTime + '</span>'+
-      '<span class = "updateTime">&nbsp;更新时间：' + note.updateTime + '</span>'+
+      '<div class = "createTime">创建时间：' + note.createTime + '</div>'+
+      '<div class = "updateTime">更新时间：' + note.updateTime + '</div>'+
       '&nbsp;<a href = "/note/edit/' + note._id + '" class = "oper-link edit">编辑</a>&nbsp;' +
       '&nbsp;<a href = "#" class = "oper-link del">删除</a></div>' +
     '</div>';

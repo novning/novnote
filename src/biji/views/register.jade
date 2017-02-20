@@ -1,11 +1,10 @@
 extends layout
 block css
-  link(rel='stylesheet', href='/stylesheets/register.css')
 block js
   script(src='/javascripts/register.js')
 body
 block content
-  div(class="register-container")
+  div(class="form-container")
     div
       input(type="text" id = "name" class="biji-large-input" placeholder="用户名",maxlength="20" )
     div
@@ -13,5 +12,5 @@ block content
     div
       input(type="password" id = "passwordConfirm" class="biji-large-input" placeholder="密码确认",maxlength="20" )
     div(id="reg-panel")
-      button(id = "register" class="biji-normal-btn") 注册
+      a(id = "register",class = "oper-link" href = "#") Register
     div(id = "message" style="color:red;height:30px;")

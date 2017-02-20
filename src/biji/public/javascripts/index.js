@@ -1,8 +1,6 @@
 $(document).ready(function(){
   var container = $(".content-container");
   var tasks;
-  // var panel1 = $("#container").bijiPanel({panel:data:cubeListA}).init();
-  // var panel2 = $("#container").bijiPanel({data:cubeListB}).init();
   var bijiPanels = [];
 
   //init data
@@ -17,11 +15,8 @@ $(document).ready(function(){
         var panel = sprint.bijiPanel({data:e[i]}).init();
         bijiPanels.push(panel);
       }
-
   });
-
 }
-
   $("#add-btn").click(function(){
     var name = $(".biji-normal-input").val();
     if(name != ""){

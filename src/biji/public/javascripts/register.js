@@ -1,22 +1,30 @@
 $(document).ready(function(){
+  var nameInput = $("#name");
+  nameInput.blur(function(){
 
-  $("#name").blur(function(){
     var name = $(this).val();
     if(name != ""){
+      if(!regex.regexValid(name,regex.accountRegex)){
+        $("#message").html("字母，数字，下划线");
+        return;
+      }else{
+        $("#message").html('');
+      }
       restful.asyncGet("/register/valid/"+name).success(function(e){
-
         if(e.code == 0){
           $("#message").html("用户名可以使用");
         }
       }).error(function(e){
         console.info(e.responseText);
       });
+    }else{
+        $("#message").html("请输入用户名");
     }
 
   });
 
   $("#register").click(function(){
-    var name =$("#name").val();
+    var name =nameInput.val();
     var password = $("#password").val();
     var passwordConfirm = $("#passwordConfirm").val();
 

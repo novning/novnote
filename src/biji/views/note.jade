@@ -1,6 +1,5 @@
 extends layout
 block css
-  link(rel='stylesheet', href='/stylesheets/note.css')
 block js
   script(src='/javascripts/note.js')
 body
@@ -12,5 +11,5 @@ block content
       button(id = "search" class="biji-normal-btn" )
         i(class = "material-icons") search
       a(href="/note/edit/_" class = "biji-normal-link")
-        i(class = "material-icons") save
+        i(class = "material-icons") add
     div(class="note-container")

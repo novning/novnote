@@ -1,34 +1,35 @@
 (function($) {
     $.fn.bijiPanel = function(opt) {
         var container = this;
-        var defaults = {
-            'color': 'red',
-            'fontSize': '12px'
-        };
+        var defaults = {'test': '0'};
         var options = $.extend(defaults, opt);
         var data = options.data;
         var isOrdering = false;
         function timeRender(year){
           return '<div class = "dimension timeline" >' +
-                      '<i class = "material-icons md-40">hourglass_empty</i>' +
+                      '<i class = "material-icons md-2">hourglass_empty</i>' +
                       '<span class = "sprint-year">' + year + '</span>'+
                       '<div class = "orderSetting">' +
                       '<button class="biji-fff-btn btn-orderSetting">排序</span>' +
                   '</div>';
         }
         function taskRender(index,data){
-          var str = '<div class = "task_panel" id = "' + data._id + '" index = "' + index + '">' +
-                '<div class = "title">' +
-                  data.name +
+          var n = "";
+          if(data.name.length > 15){
+            n = data.name.substr(0,15) + "...";
+          }else{
+            n = data.name;
+          }
+          var str = '<div class = "panel" id = "' + data._id + '" index = "' + index + '">' +
+                '<div class = "title" title = "' + data.name + '">' +
+                  n +
                 '</div>' +
                 '<div class = "record">' +
                   '<a href = "/taskDetail/' + data._id + '" >记录</a>' +
                 '</div>' +
-
                 '<div class = "time-panel">' +
                     '<button class="biji-fff-btn addTime" data-time = "7">7</button><button class="biji-fff-btn addTime" data-time = "5">5</button><button class="biji-fff-btn addTime" data-time="3">3</button><button class="biji-fff-btn addTime" data-time="2">2</button><button class="biji-fff-btn addTime" data-time="1">1</button>'+
                 '</div>' +
-
                 '<div class = "log-panel">' +
                   '<div>' +
                   '<textarea class = "log-content"></textarea>' +
@@ -64,7 +65,6 @@
           }
         }
         function bingCRUDEvent(){
-
           container.find(".addTime").bind("click",addTimeClick);
           container.find(".submitUpdate").click(function(){
             var that = this;
@@ -111,13 +111,13 @@
 
           container.find(".btn-orderSetting").click(function(){
             if(isOrdering){
-              container.find(".task_panel").off("mousedown");
-              container.find(".task_panel").removeAttr("style");
+              container.find(".panel").off("mousedown");
+              container.find(".panel").removeAttr("style");
               container.css("height","");
               isOrdering = false;
               $(this).text("排序");
               var updateTask = [];
-              container.find(".task_panel").each(function(i,v){
+              container.find(".panel").each(function(i,v){
                 updateTask.push({id:$(v).attr("id")});
               });
               restful.put("/task/order",updateTask).success(function(e){
@@ -146,7 +146,7 @@
         function bindDragEvent(panels) {
             console.info("bind event");
 
-            container.find(".task_panel").on('mousedown', function(e) {
+            container.find(".panel").on('mousedown', function(e) {
                 var selectCube = $(this);
 
                 var clickPosX = e.clientX - selectCube.position().left;
@@ -159,7 +159,7 @@
                 var temp = index;
                 $(selectCube).css({'opacity':0.9,'zIndex':1});
                 container.css("height",container.height());
-                $(container.find(".task_panel").get().reverse()).each(function(i, v) {
+                $(container.find(".panel").get().reverse()).each(function(i, v) {
                   $(v).css({
                       'position': 'absolute',
                       'left': $(v).position().left + 'px',
@@ -195,7 +195,7 @@
                             index != i) {
                             swapIndex = parseInt(i);
                             var moveTo = function(num, j) {
-                                var c = $('.task_panel[index=' + j + ']');
+                                var c = $('.panel[index=' + j + ']');
                                 $(c).stop();
                                 var t = cubes[j + num];
                                 c.animate({left: t.left,top: t.top}, 'fast');
@@ -228,7 +228,7 @@
                         },'fast',
                         function() {
                           if(temp != swapIndex){
-                            var swapPanel = container.find('.task_panel[index=' + temp+ ']');
+                            var swapPanel = container.find('.panel[index=' + temp+ ']');
                             if (temp > swapIndex) {
                               selectCube.insertBefore(swapPanel);
                             } else {

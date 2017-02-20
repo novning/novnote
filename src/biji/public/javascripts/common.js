@@ -119,6 +119,19 @@
       return fmt;
     }
 
+    var regex = {
+
+      acountValid:function(str){
+        var accountRegex = /[A-Za-z\d_]/; //字母数字下划线
+        if(accountRegex.test(str)){
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+    }
+
 
 
     //回到顶部

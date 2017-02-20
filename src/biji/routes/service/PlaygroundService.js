@@ -3,7 +3,6 @@ var playgroundData = require('../data/PlaygroundData');
 var PlaygroundService = {
   findByUserId:function(userId,callback){
     playgroundData.filter({userId:userId},function(docs){
-      console.info(docs);
       if(docs != null && docs.length > 0){
         callback(docs[0]);
       }else{
