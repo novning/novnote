@@ -6,8 +6,12 @@ body
 block content
   include head.jade
   div(class="container")
-    div(class="oper-container")
-      input(type="password" id = "oldPwd" class="biji-normal-input" placeholder="旧密码",maxlength="20" )
-      input(type="password" id = "newPwd" class="biji-normal-input" placeholder="新密码",maxlength="20" )
-      input(type="password" id = "newPwdConfirm" class="biji-normal-input" placeholder="新密码确认",maxlength="20" )
-      button(id = "updatePwdBtn" class="biji-normal-btn") 修改密码
+    div(style = "text-align:center;margin-top:200px;")
+      div()
+        input(type="password" id = "oldPwd" class="biji-normal-input" placeholder="旧密码",maxlength="20" )
+      div()
+        input(type="password" id = "newPwd" class="biji-normal-input" placeholder="新密码",maxlength="20" )
+      div()
+        input(type="password" id = "newPwdConfirm" class="biji-normal-input" placeholder="新密码确认",maxlength="20" )
+      div()
+        button(id = "updatePwdBtn" class="biji-normal-btn") 修改密码

@@ -21,15 +21,14 @@ $(document).ready(function(){
       content:content.ops
     };
     if(id != undefined && id != ""){
-      console.info(id + "- edit");
       model._id = id;
       restful.put("/note",model).success(function(e){
+        $.nmessage(e);
         console.info(e);
       });
     }else{
-      console.info(id + "- add");
-      console.info(model);
       restful.post("/note",model).success(function(e){
+        $.nmessage(e);
         console.info(e);
       });
     }
@@ -38,6 +37,7 @@ $(document).ready(function(){
   function initNoteEdit(){
       if(id != ""){
         restful.get("/note/id/"+id).success(function(e){
+          $.nmessage(e);
           $("#title").val(e.title);
           quill.setContents(e.content);
         });

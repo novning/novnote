@@ -1,0 +1,39 @@
+<html>
+<head>
+      <title>Jquery-Div动画显示</title>
+      <script src="javascripts/lib/jquery.js" type="text/javascript"></script>
+<style type="text/css">
+body{
+    background-color: #eee;
+}
+
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+     
+    
+    
+    $.extend({
+        nmessage : function(message){
+            var mess = $('<div id="ShowDiv" name="ShowDiv" style = "position:fixed;top:0;left:0;right:0;height:2em;text-align:center;background-color:#fff;opacity:0.7;zIndex:99;">' +message +'</div>');
+         $("body").append(mess);
+         mess.fadeIn(1000,function(){
+             mess.fadeOut(1000);
+             //setTimeout(function(){},500);
+         });
+        }
+    });
+$("#ShowButton_3").click(function(){
+    $.nmessage("ok?");
+});
+});
+
+</script>
+</head>
+<body>
+动画显示-3&nbsp<input type="button" id="ShowButton_3" name="ShowButton_3" value="显示"><br>
+
+</body>
+</html>

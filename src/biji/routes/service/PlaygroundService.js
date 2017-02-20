@@ -21,9 +21,9 @@ var PlaygroundService = {
   update:function(model,callback){
     playgroundData.update({userId:model.userId},{content:model.content},function(e){
       if(e > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"编辑成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"编辑失败！"});
       }
     });
   }

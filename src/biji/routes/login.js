@@ -14,18 +14,16 @@ router.get('/', function(req, res, next) {
 router.put('/', function(req, res, next) {
   var user = req.body;
   if(user.name.length > 20 || user.password.length > 20){
-      res.send({code:1,result:"login failed",message:"内容过长"});
+      res.send({code:1,message:"内容过长"});
   }else{
 
     userService.login(user,function(loginUser){
         if(loginUser != null){
           //login success
-          console.log("success");
           req.session.user = loginUser;
-          res.send({code:0,result:"success"});
-
+          res.send({code:0,message:"登陆成功"});
         }else{
-            res.send({code:1,result:"login failed"});
+            res.send({code:1,message:"登陆失败"});
         }
 
     });

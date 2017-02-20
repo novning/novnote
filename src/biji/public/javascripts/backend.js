@@ -7,6 +7,7 @@ $(document).ready(function(){
     var newPwdConfirm = $("#newPwdConfirm");
     if(oldPwd.val() != "" && newPwd.val() != "" && newPwd.val() == newPwdConfirm.val()){
       restful.put("/user",{oldPwd:oldPwd.val(),newPwd:newPwd.val()}).success(function(e){
+        $.nmessage(e);
         console.info(e);
         oldPwd.val("");
         newPwd.val("");

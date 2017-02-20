@@ -16,6 +16,7 @@ $(document).ready(function(){
       content:content.ops
     };
     restful.put("/playground",model).success(function(e){
+      $.nmessage(e);
       console.info(e);
     });
 
@@ -24,6 +25,7 @@ $(document).ready(function(){
     var name = $(".biji-normal-input").val();
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
+        $.nmessage(e);
         $(".biji-normal-input").val("");
       });
     }

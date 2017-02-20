@@ -8,7 +8,6 @@ $(document).ready(function(){
     restful.get("/task").success(function(e){
       tasks = e;
       container.empty();
-      console.info(e);
       for(var i = 0;i < e.length;i++){
         var sprint = $('<div class = "sprint" id = "' + e[i].year + '" ></div>');
         container.append(sprint);
@@ -21,6 +20,8 @@ $(document).ready(function(){
     var name = $(".biji-normal-input").val();
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
+        console.info(e);
+        $.nmessage(e);
         initTask();
         $(".biji-normal-input").val("");
       });

@@ -1,17 +1,17 @@
 (function($) {
     $.fn.bijiPanel = function(opt) {
         var container = this;
+        var taskYear;
+        var taskList;
         var defaults = {'test': '0'};
         var options = $.extend(defaults, opt);
         var data = options.data;
         var isOrdering = false;
         function timeRender(year){
-          return '<div class = "dimension timeline" >' +
-                      '<i class = "material-icons md-2">hourglass_empty</i>' +
+          return '<i class = "material-icons md-2">hourglass_empty</i>' +
                       '<span class = "sprint-year">' + year + '</span>'+
-                      '<div class = "orderSetting">' +
-                      '<button class="biji-fff-btn btn-orderSetting">排序</span>' +
-                  '</div>';
+                      '<div class = "order-setting">' +
+                      '<button class="biji-fff-btn btn-order-setting">排序</span>';
         }
         function taskRender(index,data){
           var n = "";
@@ -57,9 +57,6 @@
           });
           if(isChecked){
             card.find(".log-panel").show();
-            if(!card.find(".log-panel").is(":hidden")){
-
-            }
           }else{
             card.find(".log-panel").hide();
           }
@@ -86,6 +83,7 @@
             }
             var model = {id:taskId,content:contentVal,takeTime:updTime};
             restful.put("/task/updateTime/",model).success(function(e){
+              $.nmessage(e);
               console.info(e);
               content.val("");
               card.find(".log-panel").hide();
@@ -109,7 +107,7 @@
             content.val("");
           });
 
-          container.find(".btn-orderSetting").click(function(){
+          container.find(".btn-order-setting").click(function(){
             if(isOrdering){
               container.find(".panel").off("mousedown");
               container.find(".panel").removeAttr("style");
@@ -122,14 +120,13 @@
               });
               restful.put("/task/order",updateTask).success(function(e){
                 console.info(e);
+                $.nmessage(e);
               });
               container.find(".addTime").bind("click",addTimeClick);
             }else{
               isOrdering = true;
               bindDragEvent($(this).parent());
               $(this).text("完成");
-
-
               var addTimeGroup = container.find(".addTime");
               container.find(".log-panel").hide();
               addTimeGroup.each(function(i,v){
@@ -145,15 +142,12 @@
         }
         function bindDragEvent(panels) {
             console.info("bind event");
-
             container.find(".panel").on('mousedown', function(e) {
+              //$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden"});
                 var selectCube = $(this);
-
                 var clickPosX = e.clientX - selectCube.position().left;
                 var clickPosY = e.clientY - selectCube.position().top;
-
                 var cubes = {};
-
                 var index = parseInt(selectCube.attr("index"));
                 var swapIndex;
                 var temp = index;
@@ -176,7 +170,6 @@
                         bottom: $(v).position().top+ $(v).outerHeight()
                     };
                 });
-
                 $(document).on('mousemove', function(e) {
                     var selectCubeLeft = e.clientX - clickPosX;
                     var selectCubeTop = e.clientY - clickPosY;
@@ -184,9 +177,8 @@
                         'left': selectCubeLeft + 'px',
                         'top': selectCubeTop + 'px'
                     });
-                    var currentPosX = e.clientX;
-                    var currentPosY = e.clientY;
-
+                    var currentPosX = e.clientX - selectCube.parent().offset().left;
+                    var currentPosY = e.clientY - selectCube.parent().offset().top;
                     for (var i in cubes) {
                         if (currentPosX > cubes[i].left &&
                             currentPosX < cubes[i].right &&
@@ -213,24 +205,29 @@
                                 }
                             };
                             index = swapIndex;
-                            selectCube.attr('index', swapIndex); //变换_this的index
+                            selectCube.attr('index', swapIndex);
+                            break;
                         } else {
 
                         }
                     }
                 });
                 $(document).on('mouseup', function() {
+                  //$(document.body).css({"overflow-x":"auto","overflow-y":"auto"});
                     $(this).off('mousemove');
                     $(this).off('mouseup');
                     selectCube.animate({
-                            left: parseInt(cubes[swapIndex].left),
-                            top: parseInt(cubes[swapIndex].top)
+                            left: parseInt(cubes[index].left),
+                            top: parseInt(cubes[index].top)
                         },'fast',
                         function() {
-                          if(temp != swapIndex){
+                          if(temp != index){
+                            console.info(index + "---" + swapIndex);
                             var swapPanel = container.find('.panel[index=' + temp+ ']');
-                            if (temp > swapIndex) {
+
+                            if (index < temp) {
                               selectCube.insertBefore(swapPanel);
+
                             } else {
                               selectCube.insertAfter(swapPanel);
                             };
@@ -241,14 +238,17 @@
         }
         var _bijiPanel = {
             test: function() {
-                console.info("haha");
                 return this;
             },
             init: function() {
-                container.append(timeRender(data.year));
+                taskYear = $('<div class = "dimension timeline" ></div>');
+                taskYear.append(timeRender(data.year));
+                container.append(taskYear);
+                taskList = $('<div style = "position:relative"></div>');
                 $.each(data.task,function(i,v){
-                    container.append(taskRender(i,v));
+                    taskList.append(taskRender(i,v));
                 });
+                container.append(taskList);
                 bingCRUDEvent();
                 return this;
             }

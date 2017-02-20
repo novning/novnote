@@ -8,9 +8,9 @@ var NoteService = {
     model.updateTime = time;
     noteData.add(model,function(e,_id){
       if(e > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"创建成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"创建失败！"});
       }
     });
   },
@@ -53,18 +53,18 @@ var NoteService = {
       updateTime:new Date().getTime(),
     },function(e){
       if(e > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"编辑成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"编辑失败！"});
       }
     });
   },
   deleteById:function(id,callback){
     noteData.deleteById(id,function(e){
       if(e > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"删除成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"删除失败！"});
       }
     });
   }

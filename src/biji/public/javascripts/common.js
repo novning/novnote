@@ -120,7 +120,6 @@
     }
 
     var regex = {
-
       acountValid:function(str){
         var accountRegex = /[A-Za-z\d_]/; //字母数字下划线
         if(accountRegex.test(str)){

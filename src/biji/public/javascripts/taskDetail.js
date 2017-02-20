@@ -3,6 +3,7 @@ $(document).ready(function(){
     return;
     var _id = $(this).attr("id");
     restful.destroy("/task/"+_id).success(function(e){
+      $.nmessage(e);
       console.info(e);
     });
   });
@@ -11,6 +12,7 @@ $(document).ready(function(){
     return;
     var _id = $(this).attr("id");
     restful.destroy("/taskDetail/"+_id).success(function(e){
+      $.nmessage(e);
       console.info(e);
     });
   });

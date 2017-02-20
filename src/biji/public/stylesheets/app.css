@@ -6,13 +6,6 @@ login & register
   color:#ffffff;
   font-size:2em;
 }
-.biji-input {
-  border: 2px solid #fff;
-  height:40px;
-  width:200px;
-  margin:5px 0;
-  padding:5px;
-}
 .oper-link{
     display: inline-block;
     color: #ff941e;
@@ -77,16 +70,6 @@ login & register
   vertical-align: bottom;
 }
 
-.orderSetting{
-  position:absolute;
-  top:10px;
-  right:5px;
-
-}
-.btn-orderSetting{
-  width:50px;
-  height:20px;
-}
 .log-panel{
   display: none;
 }
@@ -116,10 +99,9 @@ login & register
 note
 
 */
-
 .oper{
   color:#999;
-  font-size: 0.5em;
+  text-align: right;
 }
 
 /*
@@ -159,16 +141,7 @@ note
   font-weight: bold;
   text-align: right;
 }
-.task{
-  position: relative;
-  width:100%;
-  min-height:100px;
-  background-color: #fff;
-  margin: 20px 0;
-  padding:10px;
-  box-shadow: 0 2px 0 0 rgba(3,5,6,0.25);
 
-}
 .detail{
   position: relative;
   width:100%;
@@ -177,9 +150,6 @@ note
   margin: 20px 0;
   padding:10px;
   box-shadow: 0 2px 0 0 rgba(3,5,6,0.25);
-}
-.content{
-  margin-bottom: 50px;
 }
 
 .delete-btn{
@@ -206,9 +176,6 @@ note
   color:#999;
   font-size: 0.8em;
   text-align: right;
-  position:absolute;
-  bottom:10px;
-  right:10px;
 }
 #quill-container{
   width:100%;

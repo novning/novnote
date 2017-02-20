@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var id = $(".container").attr("data-id");
-  restful.get("/note/"+id).success(function(e){
+  restful.get("/note/id/"+id).success(function(e){
     $("#title").html(e.title);
     $("#content").html(quillGetHTML(e.content));
   });

@@ -63,18 +63,18 @@ var TaskService = {
     model.order = createTime;
     taskData.add(model,function(insertCount,_id){
       if(insertCount > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"创建成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"创建失败！"});
       }
     });
   },
   update:function(id,model,callback){
     taskData.update({_id:id},model,function(e){
       if(e > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"编辑成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"编辑失败！"});
       }
     });
   },
@@ -103,9 +103,9 @@ var TaskService = {
 
             taskData.updateTakeTime({_id:model.id},updateField,function(e){
                 if(e > 0){
-                  callback({code:0,result:"success"});
+                  callback({code:0,message:"更新成功！"});
                 }else{
-                  callback({code:1,result:"fail"});
+                  callback({code:1,message:"更新失败！"});
                 }
             });
           }
@@ -125,16 +125,16 @@ var TaskService = {
       );
       order--;
     }
-    callback({code:0,result:"success"});
+    callback({code:0,message:"排序完成！"});
   },
   deleteById:function(id,callback){
     taskData.deleteOne({_id:id},function(e){
       if(e > 0){
         taskDetailData.deleteMany({taskId:id},function(detailResult){
-          callback({code:0,result:"success"});
+          callback({code:0,message:"删除成功！"});
         });
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"删除失败！"});
       }
     });
   }

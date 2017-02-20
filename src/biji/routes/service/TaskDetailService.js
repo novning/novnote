@@ -30,9 +30,9 @@ var TaskDetailService = {
   deleteById:function(id,callback){
     taskDetailData.deleteOne({_id:id},function(e){
       if(e > 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"删除成功！"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"删除失败！"});
       }
     });
 

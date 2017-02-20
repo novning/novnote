@@ -12,8 +12,8 @@
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
        url("../font/material_icons.woff2") format('woff2'),
-       url(../font/material_icons.woff) format('woff'),
-       url(../font/material_icons.ttf) format('truetype');
+       url(../font/MaterialIcons-Regular.woff) format('woff'),
+       url(../font/MaterialIcons-Regular.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -73,53 +73,6 @@ a,input,button{ outline:none; }
 body{
   background-color: #F5F5F5;
   font-size: 1em;
-}
-.container{
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-#nav{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    min-height:50px;
-    background-color:#ffa42e;
-    z-index:99;
-}
-#nav a{
-  margin: 0 9px;
-  color:#fff;
-}
-#logo{
-  display: inline-block;
-  float:left;
-  color:#ffffff;
-  margin-left:20px;
-  font-size:35px;
-  padding-top:5px;
-}
-#logo span{
-  vertical-align: bottom;
-}
-#nav-panel{
-    float:right;
-    display: inline-block;
-    padding-top:15px;
-    padding-bottom:15px;
-    margin-right:20px;
-}
-.to-head-arrow{
-    position:fixed;
-    right:20px;
-    bottom:30px;
-    background-color:#ffa42e;
-    color:#fff;
-    border-radius:5px;
-}
-.to-head-arrow a{
-  color:#fff;
 }
 .biji-normal-input {
     border: 2px solid #fff;
@@ -193,38 +146,4 @@ body{
 .biji-normal-link:active {
     position:relative;
     top:1px;
-}
-.panel{
-    width:22%;
-    min-width:230px;
-    min-height: 50px;
-    background-color: #fff;
-    margin:10px;
-    padding:10px;
-    box-shadow: 0 2px 1px 0 rgba(3,5,6,0.25);
-    display: inline-block;
-    vertical-align: top;
-}
-.panel .record{
-  margin: 10px auto;
-  box-shadow: 0 1px 0 0 rgba(3,5,6,0.25);
-}
-.panel .title{
-  font-size:0.8em;
-}
-.panel button{
-  -moz-user-select:none;
-  -webkit-user-select:none;
-  user-select:none;
-}
-.panel a{
-  font-size:0.8em;
-  -moz-user-select:none;
-  -webkit-user-select:none;
-  user-select:none;
-}
-.oper-container{
-  margin-top: 100px;
-  text-align: right;
-  padding: 10px;
 }

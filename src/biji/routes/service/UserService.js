@@ -25,9 +25,9 @@ var UserService = {
             secret.md5(user.newPwd,function(newSecPwd){
               userData.update({_id:u[0]._id},{password:newSecPwd},function(e){
                 if(e > 0){
-                  callback({code:0,result:"success"});
+                  callback({code:0,message:"密码修改成功！"});
                 }else{
-                  callback({code:1,result:"fail"});
+                  callback({code:1,message:"密码修改失败！"});
                 }
               });
             });
@@ -43,22 +43,22 @@ var UserService = {
       user.createTime = new Date().getTime();
       userData.add(user,function(e,_id){
         if(e > 0){
-          callback({code:0,result:"success"});
+          callback({code:0,message:"注册成功！"});
         }else{
-          callback({code:1,result:"fail"});
+          callback({code:1,message:"注册失败！"});
         }
       });
     }else{
-      callback({code:1,result:"fail",message:"内容过长"});
+      callback({code:1,message:"内容过长"});
     }
 
   },
   validUsername:function(name,callback){
     userData.filter({name:name},function(e){
       if(e <= 0){
-        callback({code:0,result:"success"});
+        callback({code:0,message:"可用"});
       }else{
-        callback({code:1,result:"fail"});
+        callback({code:1,message:"不可用"});
       }
     });
   }
