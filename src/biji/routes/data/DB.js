@@ -128,6 +128,13 @@ var DB = {
         callback(res.deletedCount);
       });
     });
+  },
+  clearCollection:function(collection){
+    this.conn(collection,function(col,dbClose){
+      col.deleteMany({},function(err,res){
+        dbClose();
+      });
+    });
   }
 }
 module.exports = DB;
