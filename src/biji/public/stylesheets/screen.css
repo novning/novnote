@@ -93,11 +93,9 @@
   height:20px;
 }
 .task-detail{
-  position: relative;
   width: 100%;
-  min-height: 100px;
-  background-color: #fff;
   margin: 20px 0;
-  padding: 10px;
-  box-shadow: 0 2px 0 0 rgba(3,5,6,0.25);
+}
+.task-detail ul{
+  list-style: none;
 }

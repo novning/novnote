@@ -19,30 +19,20 @@ $(document).ready(function(){
 
   function processData(e){
     container.empty();
+    console.info(e);
     for(var i = 0;i < e.length;i++){
-      container.append(renderNote(e[i]));
+      var year = $('<ul id = "' + e[i]._id + '"><div class = "note-year">'+e[i]._id+'</div></ul>');
+      for(var j = 0;j < e[i].content.length;j++){
+          year.append(renderNote(e[i].content[j]));
+      }
+      container.append(year);
     }
-    $(".del").click(function(){
-      var id = $(this).parent().attr("data-id");
-      restful.destroy("/note/" + id).success(function(e){
-        $.nmessage(e);
-        initNote();
-      });
-    });
   }
 
   function renderNote(note){
-    return '<div class = "panel">' +
-      '<div class = "title">' +
-      '<a href = "/note/detail/' + note._id + '">' + note.title +  '</a></div>' +
-      '<div class = "time-message" data-id = "' + note._id + '">' +
-      '<span >' + note.updateTime + '&nbsp;</span>'+
-      '<a href = "/note/edit/' + note._id + '" class = "edit">' +
-      '<i class = "material-icons">edit</i>' +
-      '</a>&nbsp;' +
-      '<a href = "#" class = "del">' + '<i class = "material-icons">delete</i>' +
-      '</a></div>' +
-    '</div>';
+    return '<li><time>' + new Date(note.updateTime).format("MM-hh") + '</time>—' +
+    '<a href = "/note/detail/' + note._id + '">' + note.title +  '</a></div>' +
+    '</li>';
   }
 
   initNote();

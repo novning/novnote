@@ -12,7 +12,7 @@ $(document).ready(function(){
     theme: 'snow'  // or 'bubble'
   });
   $("#save").click(function(){
-    var title = $("#title").val();
+    var title = $("#note-title").val();
     if(title == "")return;
 
     var content = quill.getContents();
@@ -32,13 +32,14 @@ $(document).ready(function(){
         console.info(e);
       });
     }
+    window.location.href = "/note";
   });
 
   function initNoteEdit(){
       if(id != ""){
         restful.get("/note/id/"+id).success(function(e){
-          $.nmessage(e);
-          $("#title").val(e.title);
+          console.info(e);
+          $("#note-title").val(e.title);
           quill.setContents(e.content);
         });
       }

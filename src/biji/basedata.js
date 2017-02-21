@@ -12,7 +12,6 @@ var DB = require('./routes/data/DB');
   DB.clearCollection("user");
   DB.clearCollection("task");
   DB.clearCollection("taskDetail");
-  DB.clearCollection("playground");
   DB.clearCollection("note");
 
 secret.md5("admin",function(secPwd){

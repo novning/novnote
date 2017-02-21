@@ -21,8 +21,13 @@ var NoteData = {
   findById:function(filter,callback){
     DB.findByID(this.collection,filter,callback);
   },
-  filterField:function(filter,field,callback){
-    DB.filterField(this.collection,filter,field,callback);
+  filterFieldAndGroupAndSort:function(userId,callback){
+    DB.filterFieldAndGroupAndSort(this.collection,
+      {userId:userId},
+      { updateTime : 1 },
+      '$createYear',
+      {_id:'$_id',title:'$title',updateTime:'$updateTime'},
+      callback);
   },
   findByTitleLike:function(title,callback){
     var regex = eval('/' + title + '/');

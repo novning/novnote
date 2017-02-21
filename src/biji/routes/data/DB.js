@@ -135,6 +135,20 @@ var DB = {
         dbClose();
       });
     });
-  }
+  },
+  filterFieldAndGroupAndSort:function(collection,match,sort,group,addToSet,callback){
+    this.conn(collection,function(col,dbClose){
+      col.aggregate(
+        { '$match': match},
+        { '$sort' : sort},
+        { '$group':
+          { _id:group,
+          content:{$addToSet:addToSet} }},
+        function(err,res){
+          dbClose();
+          callback(res);
+      });
+    });
+  },
 }
 module.exports = DB;

@@ -30,7 +30,7 @@ var TaskService = {
     });
   },
   findByUserId:function(userId,callback){
-    taskData.filter({userId,userId},function(tasks){
+    taskData.filter({userId:userId},function(tasks){
       var processData = [];
       if(tasks && tasks.length > 0){
         //group by updateTime.getFullYear

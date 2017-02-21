@@ -14,6 +14,8 @@ $(document).ready(function(){
         var panel = sprint.bijiPanel({data:e[i]}).init();
         bijiPanels.push(panel);
       }
+  }).error(function(e){
+    console.info(e);
   });
 }
   $("#add-btn").click(function(){

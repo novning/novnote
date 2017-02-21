@@ -14,7 +14,6 @@ var register = require('./routes/register');
 var user = require('./routes/user');
 var task = require('./routes/task');
 var taskDetail = require('./routes/taskDetail');
-var playground = require('./routes/playground');
 var note = require('./routes/note');
 var config = require('./routes/common/config').c();
 
@@ -65,7 +64,6 @@ app.use('/backend', backend);
 app.use('/user', user);
 app.use('/task', task);
 app.use('/taskDetail', taskDetail);
-app.use('/playground', playground);
 app.use('/note', note);
 
 

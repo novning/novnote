@@ -3,9 +3,10 @@ var moment = require('moment');
 
 var NoteService = {
   add:function(model,callback){
-    var time = new Date().getTime();
-    model.createTime = time;
-    model.updateTime = time;
+    var time = new Date();
+    model.createYear = time.getFullYear();
+    model.createTime = time.getTime();
+    model.updateTime = time.getTime();
     noteData.add(model,function(e,_id){
       if(e > 0){
         callback({code:0,message:"创建成功！"});
@@ -15,15 +16,8 @@ var NoteService = {
     });
   },
   findByUserId:function(userId,callback){
-    noteData.filterField({userId:userId},{content:0},function(docs){
-      if(docs.length > 0){
-          for(var i = 0;i < docs.length;i++){
-            docs[i].createTime = moment(docs[i].createTime).format("YYYY-MM-DD");
-            docs[i].updateTime = moment(docs[i].updateTime).format("YYYY-MM-DD");
-          }
-      }
+    noteData.filterFieldAndGroupAndSort(userId,function(docs){
       callback(docs);
-
     });
   },
   findById:function(id,callback){

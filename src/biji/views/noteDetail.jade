@@ -9,5 +9,11 @@ block content
   include head.jade
   div(class="container" data-id=id)
     div(id = "note-container")
-      div(id="title")
+      div(id = "title")
+        span(id = "title-content")
+        span(id = "note-oper")
+          a(href = "#" id = "edit")
+            i(class = "material-icons") edit
+          a(href = "#" id = "del" )
+            i(class = "material-icons") delete
       div(id="content")
