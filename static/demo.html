@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="author" content="haibao"/>
+	<meta name="url" content="http://www.hehaibao.com/html5-css3-timeline"/>
+	<title>HTML5+CSS3 响应式垂直时间轴demo</title>
+	<style>
+		body{font-size:100%;background-color:#f2f2f2;}
+		html,body,ul{margin:0;padding:0;overflow-x:hidden;}
+		li{list-style:none;}
+		a{color:#333;text-decoration:none;}
+		p{line-height:22px;}
+		h1{margin:2em 0;color:#333;text-align:center;font-size:1.2em;}
+		#timeline-box{position:relative;padding:1em 0;margin:2em 0;}
+		#timeline-box:before{-webkit-animation:move-to-down 1.4s;content:'';position:absolute;top:0;left:18px;width:4px;height:100%;background-color:#d7e4ed;}
+		#timeline-box li:before{-webkit-animation:move-to-right 1.2s;content:'';width:20px;height:20px;line-height:20px;color:#fff;text-align:center;background-color:#d7e4ed;border-radius:50%;position:absolute;left:10px;}
+		#timeline-box li:nth-child(even):before{background-color:#5bc0de;}
+		#timeline-box li{margin:2em 0 2em 3em;}
+		.content{-webkit-animation:move-to-left 1.2s;position:relative;background-color:#fff;color:#999;padding:1em;margin-right:1em;box-shadow:4px 6px 10px #ddd;-webkit-box-shadow:4px 6px 10px #ddd;}
+		.content:before{content:'';position:absolute;top:5px;left:-8px;display:block;width:0;height:0;border-top:8px solid transparent;border-bottom: 8px solid transparent;border-right: 8px solid #fff;}
+		.title{font-size:1.2em;color:#666;line-height:22px;}
+		.read-more{width:100%;overflow:hidden;margin-top:20px;}
+		.read-more time{color:#999;float:left;line-height:32px;}
+		.read-more a{float:right;display:block;padding:8px;background-color:#d7e4ed;color:#fff;border-radius:5px;}
+		#timeline-box li:nth-child(even) .read-more a{background-color:#5bc0de;}
+		@-webkit-keyframes move-to-right{
+			0% {left:-1000px;}
+			100% {left:0;}
+		}
+		@-webkit-keyframes move-to-left{
+			0% {right:-2000px;}
+			100% {right:0;}
+		}
+		@-webkit-keyframes move-to-down{
+			0% {top:-3000px;}
+			100% {top:0;}
+		}
+	</style>
+</head>
+<body>
+	<h1>HTML5+CSS3 响应式垂直时间轴</h1>
+	<ul id="timeline-box">
+		<li>
+			<div class="content">
+				<a href="#" class="title">HTML5+CSS3响应式垂直时间轴</a>
+				<p>
+					网页时间轴一般用于展示以时间为主线的事件，如企业网站常见的公司发展历程等。本篇将给大家介绍一款基于HTML5和CSS3的漂亮的垂直时间轴，它可以响应页面布局，适用于HTML5开发的PC和移动手机WEB应用。
+				</p>
+				<div class="read-more">
+					<time>2015-05-01</time>
+					<a href="#">阅读全文</a>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="content">
+				<a href="#" class="title">HTML5+CSS3响应式垂直时间轴</a>
+				<p>
+					本篇将给大家介绍一款基于HTML5和CSS3的漂亮的垂直时间轴，它可以响应页面布局，适用于HTML5开发的PC和移动手机WEB应用。
+				</p>
+				<div class="read-more">
+					<time>2015-05-02</time>
+					<a href="#">阅读全文</a>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="content">
+				<a href="#" class="title">HTML5+CSS3实现的响应式垂直时间轴</a>
+				<p>
+					网页时间轴一般用于展示以时间为主线的事件，如企业网站常见的公司发展历程等。
+				</p>
+				<div class="read-more">
+					<time>2015-05-03</time>
+					<a href="#">阅读全文</a>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="content">
+				<a href="#" class="title">HTML5+CSS3实现的响应式垂直时间轴</a>
+				<p>
+					网页时间轴一般用于展示以时间为主线的事件，如企业网站常见的公司发展历程等。适用于HTML5开发的PC和移动手机WEB应用。
+				</p>
+				<div class="read-more">
+					<time>2015-05-04</time>
+					<a href="#">阅读全文</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

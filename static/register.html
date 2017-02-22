@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Register</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,17 +13,15 @@
     <script src="/javascripts/lib/jquery.js"></script>
     <script src="/javascripts/common.js"></script>
     <script src="/javascripts/nmessage.js"></script>
-    <script src="/javascripts/login.js"></script>
+    <script src="/javascripts/register.js"></script>
 </head>
 
 <body>
     <div class="form-container">
-        <div><span id="login-logo"><a href="/"><i class="material-icons">explore</i><span>snshine</span></a>
-            </span>
-        </div>
-        <div><input type="text" placeholder="username" id="name" value="admin" maxlength="20" class="biji-large-input"></div>
-        <div><input type="password" id="password" value="admin" placeholder="password" maxlength="20" class="biji-large-input"></div>
-        <div><a id="register" href="/register" class="oper-link">Register</a><a id="login" href="#" class="oper-link">Login</a></div>
+        <div><input type="text" id="name" placeholder="用户名" maxlength="20" class="biji-large-input"></div>
+        <div><input type="password" id="password" placeholder="密码" maxlength="20" class="biji-large-input"></div>
+        <div><input type="password" id="passwordConfirm" placeholder="密码确认" maxlength="20" class="biji-large-input"></div>
+        <div id="reg-panel"><a id="cancel" href="#" class="oper-link">Cancel</a><a id="register" href="#" class="oper-link">Register</a></div>
         <div id="message" style="color:red;height:30px;"></div>
     </div>
 </body>

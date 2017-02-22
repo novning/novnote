@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>backend</title>
+    <title>note</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
     <script src="/javascripts/lib/jquery.js"></script>
     <script src="/javascripts/common.js"></script>
     <script src="/javascripts/nmessage.js"></script>
-    <script src="/javascripts/backend.js"></script>
+    <script src="/javascripts/note.js"></script>
 </head>
 
 <body>
@@ -23,11 +23,15 @@
             <a href="/backend"><i class="material-icons">tag_faces</i></a><a href="/login/exit"><i class="material-icons">exit_to_app</i></a></div>
     </div>
     <div class="container">
-        <div style="text-align:center;margin-top:200px;">
-            <div><input type="password" id="oldPwd" placeholder="旧密码" maxlength="20" class="biji-normal-input"></div>
-            <div><input type="password" id="newPwd" placeholder="新密码" maxlength="20" class="biji-normal-input"></div>
-            <div><input type="password" id="newPwdConfirm" placeholder="新密码确认" maxlength="20" class="biji-normal-input"></div>
-            <div><button id="updatePwdBtn" class="biji-normal-btn">修改密码</button></div>
+        <div class="note-container">
+            <ul id="2017">
+                <div class="note-year">2017</div>
+                <li><time>02-10</time>—<a href="/note/detail/58abaa2f43b0700000000001">test987</a></li>
+                <li><time>02-09</time>—<a href="/note/detail/58ab93fd58d4890000000001">test1</a></li>
+                <li><time>02-09</time>—<a href="/note/detail/58ab942758d4890000000002">test2</a></li>
+                <li><time>02-10</time>—<a href="/note/detail/58aba25673572c0000000001">红红火火恍恍惚惚，又一年</a></li>
+                <li><time>02-10</time>—<a href="/note/detail/58aba9f9400b3b0000000006">test123</a></li>
+            </ul>
         </div>
     </div>
 </body>

@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>backend</title>
+    <title>note detail</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +12,9 @@
     <script src="/javascripts/lib/jquery.js"></script>
     <script src="/javascripts/common.js"></script>
     <script src="/javascripts/nmessage.js"></script>
-    <script src="/javascripts/backend.js"></script>
+    <script src="/javascripts/lib/quill/quill.core.js"></script>
+    <script src="/javascripts/lib/quill/quill.min.js"></script>
+    <script src="/javascripts/noteDetail.js"></script>
 </head>
 
 <body>
@@ -22,12 +23,12 @@
         <div id="nav-panel"><a href="/"><i class="material-icons">timeline</i></a><a href="/"><i class="material-icons">date_range</i></a><a href="/note"><i class="material-icons">subject</i></a><a href="/note/edit/_"><i class="material-icons">edit</i></a>
             <a href="/backend"><i class="material-icons">tag_faces</i></a><a href="/login/exit"><i class="material-icons">exit_to_app</i></a></div>
     </div>
-    <div class="container">
-        <div style="text-align:center;margin-top:200px;">
-            <div><input type="password" id="oldPwd" placeholder="旧密码" maxlength="20" class="biji-normal-input"></div>
-            <div><input type="password" id="newPwd" placeholder="新密码" maxlength="20" class="biji-normal-input"></div>
-            <div><input type="password" id="newPwdConfirm" placeholder="新密码确认" maxlength="20" class="biji-normal-input"></div>
-            <div><button id="updatePwdBtn" class="biji-normal-btn">修改密码</button></div>
+    <div data-id="58abaa2f43b0700000000001" class="container">
+        <div id="note-container">
+            <div id="title"><span id="title-content">test987</span><span id="note-oper"><a href="#" id="edit"><i class="material-icons">edit</i></a><a href="#" id="del"><i class="material-icons">delete</i></a></span></div>
+            <div id="content">
+                <p>casdfasdfasdfadsf</p>
+            </div>
         </div>
     </div>
 </body>

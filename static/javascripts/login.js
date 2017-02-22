@@ -3,7 +3,7 @@ $(document).ready(function(){
     var name = $("#name").val();
     var password = $("#password").val();
     var user = {name:name,password:password};
-    restful.put("/user/login",user).success(function(e){
+    restful.put("/login",user).success(function(e){
       if(e.code == 0){
         window.location = "/";
       }else{
@@ -20,6 +20,9 @@ $(document).ready(function(){
 }
 
   $("#login").click(login);
+  $("#register").click(function(){
+    restful.get("/register");
+  });
 
 
 });

@@ -60,7 +60,39 @@
                 data: JSON.stringify(model)
             });
             return jQuery.ajax(options);
+        },
+        asyncPut: function (url, model, options) {
+            opts = $.extend({}, {
+                async: true,
+                type: 'PUT',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: url,
+                data: JSON.stringify(model)
+            }, options || {});
+            return jQuery.ajax(opts);
+        },
+        asyncPost: function (url, model, options) {
+            var opts = $.extend({}, {
+                async: true,
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: url,
+                data: JSON.stringify(model)
+            }, options || {});
+            return jQuery.ajax(opts);
+        },
+        asyncGet: function (url, options) {
+            var opts = $.extend({}, {
+                async: true,
+                type: 'GET',
+                dataType: 'json',
+                url: url
+            }, options || {});
+            return jQuery.ajax(opts);
         }
+
     };
     // 对Date的扩展，将 Date 转化为指定格式的String
     // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
@@ -85,6 +117,18 @@
         if(new RegExp("("+ k +")").test(fmt))
       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
       return fmt;
+    }
+
+    var regex = {
+      acountValid:function(str){
+        var accountRegex = /[A-Za-z\d_]/; //字母数字下划线
+        if(accountRegex.test(str)){
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
     }
 
 

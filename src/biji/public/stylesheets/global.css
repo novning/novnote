@@ -53,8 +53,9 @@
 
 
 body{
-    background-color: #eeeeee;
+    background-color: #f5f5f5;
     color:#555;
+    font-size: 1em;
     font: normal 100% Helvetica, Arial, sans-serif;
 }
 a{
@@ -69,81 +70,3 @@ a:active{
 }
 a,input,button{ outline:none; }
 ::-moz-focus-inner{border:0px;}
-
-body{
-  background-color: #F5F5F5;
-  font-size: 1em;
-}
-.biji-normal-input {
-    border: 2px solid #fff;
-    height:26px;
-    width:200px;
-    padding-left: 2px;
-    padding-right: 2px;
-    vertical-align: bottom;
-}
-.biji-large-input {
-  border: 2px solid #fff;
-  height:40px;
-  line-height: 40px;
-  width:200px;
-  margin:5px 0;
-  padding:5px;
-}
-.biji-normal-btn {
-    background-color: #ffa42e;
-    border: 2px solid #fff;
-    color:#fff;
-    height:26px;
-    width:40px;
-    font-size:16px;
-    font-weight: bold;
-}
-.biji-normal-btn:hover {
-    background-color:#ff941e;
-}
-.biji-normal-btn:active {
-    position:relative;
-    top:1px;
-}
-.biji-fff-btn{
-    color:#ff941e;
-    background-color: #fff;
-    border:1px solid #ff941e;
-    border-style: none;
-    height:20px;
-    width:20%;
-}
-.biji-fff-btn:hover {
-    color: #ffffff;
-    background-color:#ff941e;
-}
-.biji-fff-btn:active {
-    background-color:#ff942e;
-    /*position:relative;
-    top:1px;*/
-}
-.biji-fff-btn:disabled{
-  color:#ffa42e;
-  background-color: #eee;
-}
-
-.biji-normal-link {
-    text-align: center;
-    display: inline-block;
-    background-color: #ffa42e;
-    border: 2px solid #fff;
-    color:#fff;
-    height:26px;
-    width:40px;
-    font-size:1em;
-    font-weight: bold;
-}
-.biji-normal-link:hover {
-    background-color:#ff941e;
-    color:#fff;
-}
-.biji-normal-link:active {
-    position:relative;
-    top:1px;
-}

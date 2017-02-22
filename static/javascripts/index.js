@@ -1,8 +1,6 @@
 $(document).ready(function(){
-  var container = $(".container");
+  var container = $(".content-container");
   var tasks;
-  // var panel1 = $("#container").bijiPanel({panel:data:cubeListA}).init();
-  // var panel2 = $("#container").bijiPanel({data:cubeListB}).init();
   var bijiPanels = [];
 
   //init data
@@ -10,28 +8,28 @@ $(document).ready(function(){
     restful.get("/task").success(function(e){
       tasks = e;
       container.empty();
-      console.info(e);
       for(var i = 0;i < e.length;i++){
         var sprint = $('<div class = "sprint" id = "' + e[i].year + '" ></div>');
         container.append(sprint);
         var panel = sprint.bijiPanel({data:e[i]}).init();
         bijiPanels.push(panel);
       }
-
+  }).error(function(e){
+    console.info(e);
   });
-
 }
-
   $("#add-btn").click(function(){
-    var name = $(".add-input").val();
+    var name = $(".biji-normal-input").val();
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
+        console.info(e);
+        $.nmessage(e);
         initTask();
-        $("#add-input").empty();
+        $(".biji-normal-input").val("");
       });
     }
   });
 
-  //initTask();
+  initTask();
 
 });
