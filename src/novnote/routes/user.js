@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 });
 router.put('/', function(req, res, next) {
   var model = req.body;
+  model.name = req.session.user.name;
   userService.updatePassword(model,function(e){
     res.send(e);
   });

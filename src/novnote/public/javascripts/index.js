@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var container = $(".content-container");
   var tasks;
-  var bijiPanels = [];
+  var novnotePanels = [];
 
   //init data
   function initTask(){
@@ -11,8 +11,8 @@ $(document).ready(function(){
       for(var i = 0;i < e.length;i++){
         var sprint = $('<div class = "sprint" id = "' + e[i].year + '" ></div>');
         container.append(sprint);
-        var panel = sprint.bijiPanel({data:e[i]}).init();
-        bijiPanels.push(panel);
+        var panel = sprint.novnotePanel({data:e[i]}).init();
+        novnotePanels.push(panel);
       }
   }).error(function(e){
     console.info(e);
@@ -25,7 +25,7 @@ $(document).ready(function(){
         console.info(e);
         $.nmessage(e);
         initTask();
-        $(".biji-normal-input").val("");
+        $(".novnote-normal-input").val("");
       });
     }
   });
