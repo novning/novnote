@@ -1,12 +1,15 @@
-.biji-normal-input {
+/*@media screen and (min-width: 500px){
+
+}*/
+.novnote-normal-input {
     border: 2px solid #fff;
-    height:46px;
-    width:80%;
+    height:26px;
+    width:200px;
     padding-left: 2px;
     padding-right: 2px;
     vertical-align: bottom;
 }
-.biji-large-input {
+.novnote-large-input {
   border: 2px solid #fff;
   height:40px;
   line-height: 40px;
@@ -14,23 +17,23 @@
   margin:5px 0;
   padding:5px;
 }
-.biji-normal-btn {
+.novnote-normal-btn {
     background-color: #ffa42e;
     border: 2px solid #fff;
     color:#fff;
-    height:46px;
-    width:20%;
+    height:26px;
+    width:40px;
     font-size:16px;
     font-weight: bold;
 }
-.biji-normal-btn:hover {
+.novnote-normal-btn:hover {
     background-color:#ff941e;
 }
-.biji-normal-btn:active {
+.novnote-normal-btn:active {
     position:relative;
     top:1px;
 }
-.biji-fff-btn{
+.novnote-fff-btn{
     color:#ff941e;
     background-color: #fff;
     border:1px solid #ff941e;
@@ -38,21 +41,21 @@
     height:20px;
     width:20%;
 }
-.biji-fff-btn:hover {
+.novnote-fff-btn:hover {
     color: #ffffff;
     background-color:#ff941e;
 }
-.biji-fff-btn:active {
+.novnote-fff-btn:active {
     background-color:#ff942e;
     /*position:relative;
     top:1px;*/
 }
-.biji-fff-btn:disabled{
+.novnote-fff-btn:disabled{
   color:#ffa42e;
   background-color: #eee;
 }
 
-.biji-normal-link {
+.novnote-normal-link {
     text-align: center;
     display: inline-block;
     background-color: #ffa42e;
@@ -63,31 +66,30 @@
     font-size:1em;
     font-weight: bold;
 }
-.biji-normal-link:hover {
+.novnote-normal-link:hover {
     background-color:#ff941e;
     color:#fff;
 }
-.biji-normal-link:active {
+.novnote-normal-link:active {
     position:relative;
     top:1px;
 }
 
 
 .container{
-    width:100%;
-    margin-bottom: 100px;
+    margin-top: 100px;
+    width:80%;
     margin-left: auto;
     margin-right: auto;
 }
 #nav{
     position:fixed;
-    bottom:0;
+    top:0;
     left:0;
     right:0;
     min-height:50px;
     background-color:#ffa42e;
     z-index:99;
-    text-align: center;
 }
 #nav a{
   margin: 0 9px;
@@ -95,32 +97,29 @@
 }
 
 #logo{
-  text-align: center;
-  color:#ffffff;
   display: inline-block;
-  font-size:35px;
-  padding-top:5px;
+  float:left;
+  color:#ffffff;
+  margin-left:2em;
+  font-size:2em;
 }
-#logo{
-  display: none;
+#logo span{
+  vertical-align: bottom;
 }
 #nav-panel{
+    float:right;
     display: inline-block;
-    padding-top:15px;
-    padding-bottom:15px;
-    width:100%;
-}
-#nav-panel a{
-  display: inline-block;
-  width:10%;
+    padding-bottom:0.5em;
+    margin-top: 1em;
+    margin-right:2em;
 }
 
 .panel{
-    width:100%;
+    width:22%;
     min-width:230px;
     min-height: 50px;
     background-color: #fff;
-    margin:10px 0;
+    margin:10px;
     padding:10px;
     box-shadow: 0 2px 1px 0 rgba(3,5,6,0.25);
     display: inline-block;
@@ -145,28 +144,38 @@
   user-select:none;
 }
 .oper-container{
-  margin-top: 10px;
   text-align: right;
-  padding: 10px;
+  padding: 10px 0;
 }
-
 .to-head-arrow{
-    display: none;
+    position:fixed;
+    right:20px;
+    bottom:30px;
+    background-color:#ffa42e;
+    color:#fff;
+    border-radius:5px;
 }
 .to-head-arrow a{
   color:#fff;
 }
 .order-setting{
-  display: none;
+  position:absolute;
+  top:10px;
+  right:5px;
+}
+.btn-order-setting{
+  width:50px;
+  height:20px;
 }
 .task-detail{
   width: 100%;
-  margin: 20px 1em;
+  margin: 20px 0;
 }
 .task-detail ul{
   list-style: none;
-  margin: 0 1em;
 }
+
+
 
 
 
@@ -277,8 +286,8 @@ login & register
 note
 
 */
-.note-container ul{
-  padding:10px;
+.note-container{
+
 }
 .note-container ul li{
   padding-top:0.5em;
@@ -303,9 +312,6 @@ note
   note detail
 */
 
-#note-container{
-  margin-top: 100px;
-}
 #title{
   font-size: 1.5em;
   padding-bottom:10px;

@@ -1,0 +1,17 @@
+extends layout
+block css
+block js
+  script(src='/javascripts/backend.js')
+body
+block content
+  include head.jade
+  div(class="container")
+    div(style = "text-align:center;margin-top:200px;")
+      div()
+        input(type="password" id = "oldPwd" class="novnote-normal-input" placeholder="旧密码",maxlength="20" )
+      div()
+        input(type="password" id = "newPwd" class="novnote-normal-input" placeholder="新密码",maxlength="20" )
+      div()
+        input(type="password" id = "newPwdConfirm" class="novnote-normal-input" placeholder="新密码确认",maxlength="20" )
+      div()
+        button(id = "updatePwdBtn" class="novnote-normal-btn") 修改密码

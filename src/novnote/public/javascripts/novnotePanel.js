@@ -1,5 +1,5 @@
 (function($) {
-    $.fn.bijiPanel = function(opt) {
+    $.fn.novnotePanel = function(opt) {
         var container = this;
         var taskYear;
         var taskList;
@@ -11,7 +11,7 @@
           return '<i class = "material-icons md-2">hourglass_empty</i>' +
                       '<span class = "sprint-year">' + year + '</span>'+
                       '<div class = "order-setting">' +
-                      '<button class="biji-fff-btn btn-order-setting">排序</span>';
+                      '<button class="novnote-fff-btn btn-order-setting">排序</span>';
         }
         function taskRender(index,data){
           var n = "";
@@ -28,7 +28,7 @@
                   '<a href = "/taskDetail/' + data._id + '" >记录</a>' +
                 '</div>' +
                 '<div class = "time-panel">' +
-                    '<button class="biji-fff-btn addTime" data-time = "7">7</button><button class="biji-fff-btn addTime" data-time = "5">5</button><button class="biji-fff-btn addTime" data-time="3">3</button><button class="biji-fff-btn addTime" data-time="2">2</button><button class="biji-fff-btn addTime" data-time="1">1</button>'+
+                    '<button class="novnote-fff-btn addTime" data-time = "7">7</button><button class="novnote-fff-btn addTime" data-time = "5">5</button><button class="novnote-fff-btn addTime" data-time="3">3</button><button class="novnote-fff-btn addTime" data-time="2">2</button><button class="novnote-fff-btn addTime" data-time="1">1</button>'+
                 '</div>' +
                 '<div class = "log-panel">' +
                   '<div>' +
@@ -236,7 +236,7 @@
                 });
             });
         }
-        var _bijiPanel = {
+        var _novnotePanel = {
             test: function() {
                 return this;
             },
@@ -254,6 +254,6 @@
             }
 
         }
-        return _bijiPanel;
+        return _novnotePanel;
     }
 })(jQuery);

@@ -19,7 +19,7 @@ $(document).ready(function(){
   });
 }
   $("#add-btn").click(function(){
-    var name = $(".biji-normal-input").val();
+    var name = $(".novnote-normal-input").val();
     if(name != ""){
       restful.post("/task",{name:name}).success(function(e){
         console.info(e);
