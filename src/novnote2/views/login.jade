@@ -1,0 +1,20 @@
+extends layout
+block css
+block js
+  script(src='/javascripts/login.js')
+body
+block content
+  div(class = "form-container")
+    div
+      span(id = "login-logo")
+        a(href = "/")
+          i(class = "material-icons" ) explore
+          span() novnote
+    div
+      input(type="text",class="novnote-large-input",placeholder="username",id = "name",value = "admin",maxlength="20")
+    div
+      input(type = "password",class = "novnote-large-input",id = "password",value = "admin",placeholder = "password",maxlength="20")
+    div()
+      a(id = "register",class = "oper-link" href = "/register") Register
+      a(id = "login",class = "oper-link" href = "#") Login
+    div(id = "message" style="color:red;height:30px;")

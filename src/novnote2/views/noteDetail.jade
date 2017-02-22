@@ -1,0 +1,19 @@
+extends layout
+block css
+block js
+  script(src="/javascripts/lib/quill/quill.core.js" )
+  script(src="/javascripts/lib/quill/quill.min.js" )
+  script(src='/javascripts/noteDetail.js')
+body
+block content
+  include head.jade
+  div(class="container" data-id=id)
+    div(id = "note-container")
+      div(id = "title")
+        span(id = "title-content")
+        span(id = "note-oper")
+          a(href = "#" id = "edit")
+            i(class = "material-icons") edit
+          a(href = "#" id = "del" )
+            i(class = "material-icons") delete
+      div(id="content")

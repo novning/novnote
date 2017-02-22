@@ -1,0 +1,18 @@
+extends layout
+block css
+block js
+  script(src='/javascripts/novnotePanel.js')
+  script(src='/javascripts/index.js')
+body
+block content
+    include head.jade
+
+
+    div(class = "container")
+      div(class = "oper-container" )
+        input(type="text" class="novnote-normal-input" placeholder="create",maxlength="50" )
+        button(id = "add-btn" class="novnote-normal-btn" )
+          i(class = "material-icons") add
+      div(class = "content-container")
+
+    include moveToHead.jade
